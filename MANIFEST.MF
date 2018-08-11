@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: lib/log4j-1.2.14.jar lib/activation.jar lib/mail.jar
+Main-Class: SSQMail
