@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
- * ²»ĞèDNSµÄAccessÊı¾İ¿âÁ¬½Ó
+ * ä¸éœ€DNSçš„Accessæ•°æ®åº“è¿æ¥
  */
 
 public class mdbDB {
 	public mdbDB() {
-		// ³õÊ¼»¯²Ù×÷
+		// åˆå§‹åŒ–æ“ä½œ
 	}
 
 	public static void main(String[] args) {
@@ -20,11 +20,11 @@ public class mdbDB {
 		String sql = null;
 		String conStr = null;
 
-		String path = System.getProperties().getProperty("user.dir");// µ±Ç°Ä¿Â¼Â·¾¶
+		String path = System.getProperties().getProperty("user.dir");// å½“å‰ç›®å½•è·¯å¾„
 
 		path = path + "\\test.mdb";
 
-		System.out.println("Êı¾İ¿âËùÔÚÄ¿Â¼£º" + path);
+		System.out.println("æ•°æ®åº“æ‰€åœ¨ç›®å½•ï¼š" + path);
 		System.out.println();
 
 		conStr = "jdbc:odbc:driver={Microsoft Access Driver (*.mdb)};DBQ="
@@ -40,7 +40,7 @@ public class mdbDB {
 			sql = "select * from mdb";
 			rs = stmt.executeQuery(sql);
 
-			System.out.println("±àºÅ" + " ĞÕÃû");
+			System.out.println("ç¼–å·" + " å§“å");
 			System.out.println("==========================");
 
 			while (rs.next()) {

@@ -7,25 +7,25 @@ import java.util.List;
 public class List_ex {
 
 	/**
-	 * List °´¿ÚÊÇCollection½Ó¿ÚµÄ×Ó½Ó¿Ú£¬ËüÊÇÒ»¸öÓĞĞòµÄ¼¯ºÏ£¬ÀàËÆÓÚ¶ÓÁĞ¡£ÓÃ»§¿ÉÒÔÍ¨¹ı
-	 * ListµÄË÷ÒıÈ¡µÃÄ³Ò»¸ö¶ÔÏó¡£ºÍSet²»Ò»Í¬µÄÊÇ£¬List¼¯ºÏÔÊĞíÖØ¸´µÄÔªËØ´æÔÚ¡£
+	 * List æŒ‰å£æ˜¯Collectionæ¥å£çš„å­æ¥å£ï¼Œå®ƒæ˜¯ä¸€ä¸ªæœ‰åºçš„é›†åˆï¼Œç±»ä¼¼äºé˜Ÿåˆ—ã€‚ç”¨æˆ·å¯ä»¥é€šè¿‡
+	 * Listçš„ç´¢å¼•å–å¾—æŸä¸€ä¸ªå¯¹è±¡ã€‚å’ŒSetä¸ä¸€åŒçš„æ˜¯ï¼ŒListé›†åˆå…è®¸é‡å¤çš„å…ƒç´ å­˜åœ¨ã€‚
 	 * 
-	 * ³£ÓÃµÄÊµÏÖListµÄ½Ó¿ÚÀàÓĞArrayListºÍLinkedList¡£
+	 * å¸¸ç”¨çš„å®ç°Listçš„æ¥å£ç±»æœ‰ArrayListå’ŒLinkedListã€‚
 	 * 
-	 * ArrayListÊ¹ÓÃÒ»Î¬Êı×éÀ´ÊµÏÖList½Ó¿Ú£¬ËùÒÔ¶ÔÓÚ¿ìËÙµÄËæ»úÈ¡µÃ¶ÔÏóÀ´Ëµ£¬Ê¹ÓÃArrayList¿ÉÒÔµÃµ½½ÏºÃµÄĞÔÄÜ£¬
-	 * ÔÚÒÆ³ı»ò²åÈë¶ÔÏóÊ±£¬ArrayList¾Í±È½ÏÂı£¬ËùÒÔ¶ÔÓÚ²»»á³£ÓÃÉ¾³ıºÍ²åÈëµÄ²Ù×÷½¨ÒéÊ¹ÓÃArrayList.
+	 * ArrayListä½¿ç”¨ä¸€ç»´æ•°ç»„æ¥å®ç°Listæ¥å£ï¼Œæ‰€ä»¥å¯¹äºå¿«é€Ÿçš„éšæœºå–å¾—å¯¹è±¡æ¥è¯´ï¼Œä½¿ç”¨ArrayListå¯ä»¥å¾—åˆ°è¾ƒå¥½çš„æ€§èƒ½ï¼Œ
+	 * åœ¨ç§»é™¤æˆ–æ’å…¥å¯¹è±¡æ—¶ï¼ŒArrayListå°±æ¯”è¾ƒæ…¢ï¼Œæ‰€ä»¥å¯¹äºä¸ä¼šå¸¸ç”¨åˆ é™¤å’Œæ’å…¥çš„æ“ä½œå»ºè®®ä½¿ç”¨ArrayList.
 	 * 
-	 * LinkedList£¬¶ÔÓÚ¾­³£´ÓÈİÆ÷ÖĞÉ¾³ı»ò²åÈë¶ÔÏóµÄ²Ù×÷Ê¹ÓÃLinkedList»á»ñµÃ½ÏºÃµÄĞÔÄÜ¡£
-	 * LinkedListÌá¹©ÁËÉ¾³ıºÍ²åÈë¶ÔÏóºóĞ©ÌØ¶¨µÄ·½·¨£¬Èç£»addFirst(),addLast(),getFirst(),getLast()
+	 * LinkedListï¼Œå¯¹äºç»å¸¸ä»å®¹å™¨ä¸­åˆ é™¤æˆ–æ’å…¥å¯¹è±¡çš„æ“ä½œä½¿ç”¨LinkedListä¼šè·å¾—è¾ƒå¥½çš„æ€§èƒ½ã€‚
+	 * LinkedListæä¾›äº†åˆ é™¤å’Œæ’å…¥å¯¹è±¡åäº›ç‰¹å®šçš„æ–¹æ³•ï¼Œå¦‚ï¼›addFirst(),addLast(),getFirst(),getLast()
 	 * removeFirst(),removeLast().<br>
-	 * addFirst()±íÓĞ±íÊ×Ñ¹Èë¶ÔÏó,addLast()ÀàËÆ¡£ getFirst()±íÈ¡µÃ±íÊ×µÄ¶ÔÏó£¬getLast()ÀàËÆ¡£
-	 * removeFirst()±íµ¯³ö±íÊ×µÄ¶ÔÏó£¬¼´É¾³ı¡£removeLast()ÀàËÆ¡£
+	 * addFirst()è¡¨æœ‰è¡¨é¦–å‹å…¥å¯¹è±¡,addLast()ç±»ä¼¼ã€‚ getFirst()è¡¨å–å¾—è¡¨é¦–çš„å¯¹è±¡ï¼ŒgetLast()ç±»ä¼¼ã€‚
+	 * removeFirst()è¡¨å¼¹å‡ºè¡¨é¦–çš„å¯¹è±¡ï¼Œå³åˆ é™¤ã€‚removeLast()ç±»ä¼¼ã€‚
 	 * 
 	 */
 
 	void List_example() {
-		// List<String> list = new ArrayList<String>(); //Ğû¸æ´æ´¢µÄ¶ÔÏóÎªString£¬J2SE
-		// 5.0Ö®ºóÊ¹ÓÃµÄ·ºĞÍ¹¦ÄÜ¡£
+		// List<String> list = new ArrayList<String>(); //å®£å‘Šå­˜å‚¨çš„å¯¹è±¡ä¸ºStringï¼ŒJ2SE
+		// 5.0ä¹‹åä½¿ç”¨çš„æ³›å‹åŠŸèƒ½ã€‚
 		List<String> list = new LinkedList<String>();
 
 		list.add("a");
@@ -35,13 +35,13 @@ public class List_ex {
 		
 
 
-		System.out.println("==== ×¢Òâ´òÓ¡µÄË³ĞòºÍ¼ÓÈëSetÊ±µÄË³Ğò === ");
+		System.out.println("==== æ³¨æ„æ‰“å°çš„é¡ºåºå’ŒåŠ å…¥Setæ—¶çš„é¡ºåº === ");
 
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
 		/**
-		 * J2SE 5.0ºóÊ¹ÓÃµÄÔöÇ¿µÄforÑ­»·Ö±½Ó±éÀúListËùÓĞÔªËØ¡£ for(String s : list) {
+		 * J2SE 5.0åä½¿ç”¨çš„å¢å¼ºçš„forå¾ªç¯ç›´æ¥éå†Listæ‰€æœ‰å…ƒç´ ã€‚ for(String s : list) {
 		 * System.out.println(s); }
 		 * 
 		 */

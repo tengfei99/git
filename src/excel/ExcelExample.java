@@ -21,25 +21,25 @@ import jxl.write.WritableWorkbook;
 public class ExcelExample {
 
 	/**
-	 * ¹¦ÄÜ£º¸ù¾İÊäÈëµÄResultSetºÍÎÄ¼şÂ·¾¶FilePath£¬ÔÚÖ¸¶¨µÄÎÄ¼şÂ·¾¶½«ResultSetµÄÄÚÈİÉú³ÉExcel.
+	 * åŠŸèƒ½ï¼šæ ¹æ®è¾“å…¥çš„ResultSetå’Œæ–‡ä»¶è·¯å¾„FilePathï¼Œåœ¨æŒ‡å®šçš„æ–‡ä»¶è·¯å¾„å°†ResultSetçš„å†…å®¹ç”ŸæˆExcel.
 	 * 
 	 * @param rs
-	 *            ×ªÈëµÄResultSet
+	 *            è½¬å…¥çš„ResultSet
 	 * @param FilePath
-	 *            ±£´æExcelµÄÎÄ¼şÂ·¾¶+ÎÄ¼şÃû
+	 *            ä¿å­˜Excelçš„æ–‡ä»¶è·¯å¾„+æ–‡ä»¶å
 	 */
 	public void WriteExcel(ResultSet rs, String FilePath) {
 
-		int row = 1; // ÉèÖÃ±í¸ñµÄĞĞÊı±äÁ¿
+		int row = 1; // è®¾ç½®è¡¨æ ¼çš„è¡Œæ•°å˜é‡
 
-		int count = 0;// ×Ö¶ÎÊı
+		int count = 0;// å­—æ®µæ•°
 
-		int height = 15;// ±í¸ñµÄĞĞ¸ß
+		int height = 15;// è¡¨æ ¼çš„è¡Œé«˜
 
-		String fieldvalue = ""; // ±£´æ×Ö¶ÎÖµ
+		String fieldvalue = ""; // ä¿å­˜å­—æ®µå€¼
 
 		if (FilePath == null || "".equals(FilePath.trim())) {
-			System.out.println("ĞÅÏ¢£ºÉú³ÉExcelÎÄ¼şÂ·¾¶Îª¿Õ£¬ÇëÏÈÑ¡Ôñ±£´æµÄÎÄ¼şÂ·¾¶£¬ÔÙ²Ù×÷£¡");
+			System.out.println("ä¿¡æ¯ï¼šç”ŸæˆExcelæ–‡ä»¶è·¯å¾„ä¸ºç©ºï¼Œè¯·å…ˆé€‰æ‹©ä¿å­˜çš„æ–‡ä»¶è·¯å¾„ï¼Œå†æ“ä½œï¼");
 			return;
 		}
 
@@ -50,16 +50,16 @@ public class ExcelExample {
 			WritableSheet ws = wwb.createSheet("Sheet1", 0);
 
 			/**
-			 * Ò³Ãæ´òÓ¡¸ñÊ½Éè¶¨£ºjxl.format.PageOrientation.LANDSCAPEÎªºá´òÓ¡.PORTRAITÎªÊú´òÓ¡
+			 * é¡µé¢æ‰“å°æ ¼å¼è®¾å®šï¼šjxl.format.PageOrientation.LANDSCAPEä¸ºæ¨ªæ‰“å°.PORTRAITä¸ºç«–æ‰“å°
 			 */
 			ws.setPageSetup(jxl.format.PageOrientation.LANDSCAPE);
 
 			Label labelC;
 
-			// ÖÆ×÷±í¸ñÊ½ÏÔÊ¾¸ñÊ½
+			// åˆ¶ä½œè¡¨æ ¼å¼æ˜¾ç¤ºæ ¼å¼
 			// begin-------------------------------------------------------------------
 
-			// ÖÆ×÷±í¸ñ±êÌâµÄÏÔÊ¾¸ñÊ½:title ËÎÌå¼Ó´Ö£¬¾ÓÖĞ
+			// åˆ¶ä½œè¡¨æ ¼æ ‡é¢˜çš„æ˜¾ç¤ºæ ¼å¼:title å®‹ä½“åŠ ç²—ï¼Œå±…ä¸­
 			WritableFont wfc = new WritableFont(WritableFont.TAHOMA, 10,
 					WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,
 					jxl.format.Colour.BLACK);
@@ -71,10 +71,10 @@ public class ExcelExample {
 			title.setBorder(jxl.format.Border.ALL,
 					jxl.format.BorderLineStyle.THIN);
 
-			title.setWrap(true);// ×Ô¶¯»»ĞĞ
-			ws.setRowView(0, height); // ĞĞ¸ß
+			title.setWrap(true);// è‡ªåŠ¨æ¢è¡Œ
+			ws.setRowView(0, height); // è¡Œé«˜
 
-			// ÖÆ×÷ÆÕÍ¨µÄÏÔÊ¾¸ñÊ½£ºbody ËÎÌå£¬¾ÓÖĞ
+			// åˆ¶ä½œæ™®é€šçš„æ˜¾ç¤ºæ ¼å¼ï¼šbody å®‹ä½“ï¼Œå±…ä¸­
 			WritableFont wf = new WritableFont(jxl.write.WritableFont
 					.createFont("SimSun"), 10);
 			WritableCellFormat body = new WritableCellFormat(wf);
@@ -85,7 +85,7 @@ public class ExcelExample {
 					jxl.format.BorderLineStyle.THIN);
 			// body.setWrap(true);
 
-			// ÖÆ×÷Ê±¼äµÄÏÔÊ¾¸ñÊ½:dateFormat
+			// åˆ¶ä½œæ—¶é—´çš„æ˜¾ç¤ºæ ¼å¼:dateFormat
 			WritableFont datewf = new WritableFont(jxl.write.WritableFont
 					.createFont("SimSun"), 10);
 			DateFormat customDateFormat = new DateFormat("yyyy-mm-dd");
@@ -98,10 +98,10 @@ public class ExcelExample {
 			dateFormat.setBorder(jxl.format.Border.ALL,
 					jxl.format.BorderLineStyle.THIN);
 
-			// ÖÆ×÷±í¸ñÊ½ÏÔÊ¾¸ñÊ½ end
+			// åˆ¶ä½œè¡¨æ ¼å¼æ˜¾ç¤ºæ ¼å¼ end
 			// -------------------------------------------------------------------
 
-			// ¶ÁÈ¡ResultSetÖĞµÄ×Ö¶ÎÃûÉèÖÃ±í¸ñµÄ±êÌâ
+			// è¯»å–ResultSetä¸­çš„å­—æ®µåè®¾ç½®è¡¨æ ¼çš„æ ‡é¢˜
 			ResultSetMetaData rsm = rs.getMetaData();
 			count = rsm.getColumnCount();
 			for (int i = 1; i <= count; i++) {
@@ -110,10 +110,10 @@ public class ExcelExample {
 				ws.addCell(labelC);
 			}
 
-			// ´ÓResultSetÖĞ¶ÁÈ¡Êı¾İÌî³äExcel±í¸ñ
+			// ä»ResultSetä¸­è¯»å–æ•°æ®å¡«å……Excelè¡¨æ ¼
 			while (rs.next()) {
 
-				ws.setRowView(row, height); // ĞĞ¸ß
+				ws.setRowView(row, height); // è¡Œé«˜
 
 				for (int i = 1; i <= count; i++) {
 					fieldvalue = rs.getString(i);
@@ -122,12 +122,12 @@ public class ExcelExample {
 					ws.addCell(labelC);
 				}
 
-				row += 1; // ĞĞÊı¼Ó1.
+				row += 1; // è¡Œæ•°åŠ 1.
 			}
 
-			// Ğ´Èë²¢¹Ø±Õ
+			// å†™å…¥å¹¶å…³é—­
 			wwb.write();
-			System.out.println("ĞÅÏ¢£º½«Êı¾İµ¼Èëµ½ExcelÍê±Ï£¬ÎÄ¼şÂ·¾¶Îª£º" + FilePath);
+			System.out.println("ä¿¡æ¯ï¼šå°†æ•°æ®å¯¼å…¥åˆ°Excelå®Œæ¯•ï¼Œæ–‡ä»¶è·¯å¾„ä¸ºï¼š" + FilePath);
 			wwb.close();
 
 		} catch (SQLException sqle) {
@@ -138,19 +138,19 @@ public class ExcelExample {
 	}
 
 	/**
-	 * ¹¦ÄÜ:¶ÁÈ¡Excel±í¸ñµÄÊı¾İµ½Ò»¸ö¶şÎ¬Êı×é,·µ»ØÕâ¸ö¶şÎ¬Êı×é,ÆäÖĞµÚÒ»Î¬ÎªĞĞ,µÚ¶şÎ¬ÎªÁĞ.
+	 * åŠŸèƒ½:è¯»å–Excelè¡¨æ ¼çš„æ•°æ®åˆ°ä¸€ä¸ªäºŒç»´æ•°ç»„,è¿”å›è¿™ä¸ªäºŒç»´æ•°ç»„,å…¶ä¸­ç¬¬ä¸€ç»´ä¸ºè¡Œ,ç¬¬äºŒç»´ä¸ºåˆ—.
 	 * <p>
-	 * ¸½:ÉèÕâ¸ö¶şÎ¬Êı×éÎªst,µÃµ½µÚÒ»Î¬µÄ³¤¶ÈÎª:st.length,µÚ¶şÎ¬µÄ³¤¶ÈÎª: st[0].length.
+	 * é™„:è®¾è¿™ä¸ªäºŒç»´æ•°ç»„ä¸ºst,å¾—åˆ°ç¬¬ä¸€ç»´çš„é•¿åº¦ä¸º:st.length,ç¬¬äºŒç»´çš„é•¿åº¦ä¸º: st[0].length.
 	 * <p>
 	 * 
 	 * @param FileName
-	 *            ÎÄ¼şÂ·¾¶+ÎÄ¼şÃû
-	 * @return ¶şÎ¬Êı×é
+	 *            æ–‡ä»¶è·¯å¾„+æ–‡ä»¶å
+	 * @return äºŒç»´æ•°ç»„
 	 */
 	public String[][] ReadWrite(String FileName) {
 
 		if (FileName == null || "".equals(FileName.trim())) {
-			System.out.println("ĞÅÏ¢£º¶ÁÈëµÄExcelÎÄ¼şÂ·¾¶Îª¿Õ£¬ÇëÏÈÑ¡Ôñ¶ÁÈ¡µÄÎÄ¼ş£¬ÔÙ²Ù×÷£¡");
+			System.out.println("ä¿¡æ¯ï¼šè¯»å…¥çš„Excelæ–‡ä»¶è·¯å¾„ä¸ºç©ºï¼Œè¯·å…ˆé€‰æ‹©è¯»å–çš„æ–‡ä»¶ï¼Œå†æ“ä½œï¼");
 			return null;
 		}
 
@@ -162,17 +162,17 @@ public class ExcelExample {
 
 		try {
 			workbook = Workbook.getWorkbook(new File(FileName));
-			sheet = workbook.getSheet(0);// ¶ÁÈ¡µÚÒ»¸ö¹¤×÷±í
+			sheet = workbook.getSheet(0);// è¯»å–ç¬¬ä¸€ä¸ªå·¥ä½œè¡¨
 
-			int colnum = sheet.getColumns();// µÃµ½ÁĞÊı
-			int row = sheet.getRows();// µÃµ½ĞĞÊı
+			int colnum = sheet.getColumns();// å¾—åˆ°åˆ—æ•°
+			int row = sheet.getRows();// å¾—åˆ°è¡Œæ•°
 
 			rc = new String[row][colnum];
 
-			for (int j = 0; j < row; j++) {// jÎªĞĞ
-				for (int i = 0; i < colnum; i++) {// iÎªÁĞ
+			for (int j = 0; j < row; j++) {// jä¸ºè¡Œ
+				for (int i = 0; i < colnum; i++) {// iä¸ºåˆ—
 					Cell cell = sheet.getCell(i, j);
-					rc[j][i] = cell.getContents();// »ñµÃµ¥ÔªÊı¾İ
+					rc[j][i] = cell.getContents();// è·å¾—å•å…ƒæ•°æ®
 				}
 			}
 
@@ -187,7 +187,7 @@ public class ExcelExample {
 	}
 
 	/**
-	 * ¹¦ÄÜ:º¯ÊıÈë¿Úµ÷ÓÃÑİÊ¾
+	 * åŠŸèƒ½:å‡½æ•°å…¥å£è°ƒç”¨æ¼”ç¤º
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -206,7 +206,7 @@ public class ExcelExample {
 
 		if(batch.batchExceute("t_test", st))
 		{
-			System.out.println("ĞÅÏ¢:Ö´ĞĞÅúÁ¿²åÈëÊı¾İ³É¹¦!" );
+			System.out.println("ä¿¡æ¯:æ‰§è¡Œæ‰¹é‡æ’å…¥æ•°æ®æˆåŠŸ!" );
 		}
 
 	}

@@ -1,11 +1,11 @@
 package excel;
 
 /**
-* <p>¶ÁÈ¡Excel±í¸ñ,¿½±´¡¢¸üĞÂExcel¹¤×÷±¡ </p>
-* <p>Description: ¿ÉÒÔ¶ÁÈ¡ExcelÎÄ¼şµÄÄÚÈİ,¸üĞÂExcel¹¤×÷±¡
+* <p>è¯»å–Excelè¡¨æ ¼,æ‹·è´ã€æ›´æ–°Excelå·¥ä½œè–„ </p>
+* <p>Description: å¯ä»¥è¯»å–Excelæ–‡ä»¶çš„å†…å®¹,æ›´æ–°Excelå·¥ä½œè–„
 * </p>
 * <p>Copyright: Copyright (c) Corparation 2005</p>
-* <p>³ÌĞò¿ª·¢»·¾³Îªeclipse</p>
+* <p>ç¨‹åºå¼€å‘ç¯å¢ƒä¸ºeclipse</p>
 * @author Walker
 * @version 1.0
 */
@@ -38,34 +38,34 @@ public class XLSDemo
     private static final int SHEET_HEIGHT = 116;
     
     /**
-     * ´´½¨Excel
+     * åˆ›å»ºExcel
      */
     private void makeXls()
     {
         Workbook workbook = null;
         try
         {
-            // ¹¹½¨Workbook¶ÔÏó, Ö»¶ÁWorkbook¶ÔÏó
-            // Ö±½Ó´Ó±¾µØÎÄ¼ş´´½¨Workbook, ´ÓÊäÈëÁ÷´´½¨Workbook
+            // æ„å»ºWorkbookå¯¹è±¡, åªè¯»Workbookå¯¹è±¡
+            // ç›´æ¥ä»æœ¬åœ°æ–‡ä»¶åˆ›å»ºWorkbook, ä»è¾“å…¥æµåˆ›å»ºWorkbook
             InputStream ins = new FileInputStream("D:/Workspace/testproj/source.xls");
             workbook = Workbook.getWorkbook(ins);
 
-            // ÀûÓÃÒÑ¾­´´½¨µÄExcel¹¤×÷±¡´´½¨ĞÂµÄ¿ÉĞ´ÈëµÄExcel¹¤×÷±¡
+            // åˆ©ç”¨å·²ç»åˆ›å»ºçš„Excelå·¥ä½œè–„åˆ›å»ºæ–°çš„å¯å†™å…¥çš„Excelå·¥ä½œè–„
             File outFile = new File("D:/Workspace/testproj/test.xls");
             WritableWorkbook wwb = Workbook.createWorkbook(outFile, workbook);
-            // ¶ÁÈ¡µÚÒ»ÕÅ¹¤×÷±í
+            // è¯»å–ç¬¬ä¸€å¼ å·¥ä½œè¡¨
             WritableSheet dataSheet = wwb.getSheet(0);
-            //  ÉèÖÃ¶³½áµ¥Ôª¸ñ
+            //  è®¾ç½®å†»ç»“å•å…ƒæ ¼
             dataSheet.getSettings().setVerticalFreeze(7);
             dataSheet.getSettings().setHorizontalFreeze(2);
             
-            // ²âÊÔÄ£ÄâÊı¾İ
+            // æµ‹è¯•æ¨¡æ‹Ÿæ•°æ®
             Vector vecData = new Vector();
             for(int i = 0; i < 50; i ++)
             {
                 VireObj obj = new VireObj();
                 obj.setOrgNo("00" + i + "0");
-                obj.setOrgName("»ú¹¹" + (i + 1));
+                obj.setOrgName("æœºæ„" + (i + 1));
                 obj.setOpenAcc((int)(100 * Math.random()));
                 obj.setDestoryAcc((int)(10 * Math.random()));
                 obj.setTotalAcc((int)(500 * Math.random()));
@@ -76,20 +76,20 @@ public class XLSDemo
                 
                 vecData.add(obj);
             }            
-            // ²åÈëÊı¾İ
+            // æ’å…¥æ•°æ®
             insertData(wwb, dataSheet, vecData);            
-            // ²åÈëÄ£ÄâÍ¼ÏñÊı¾İ
+            // æ’å…¥æ¨¡æ‹Ÿå›¾åƒæ•°æ®
             Vector vecImg = new Vector();
             for(int i = 0; i < 3; i ++)
             {
                 ChartImg img = new ChartImg();
-                img.setImgTitle("Í¼Ïñ" + (i + 1));
+                img.setImgTitle("å›¾åƒ" + (i + 1));
                 img.setImgName("D:/Workspace/testproj/images/barchart.png");
                 vecImg.add(img);
             }
-            // ²åÈëÍ¼±í
+            // æ’å…¥å›¾è¡¨
             insertImgsheet(wwb, vecImg);
-            //Ğ´ÈëExcel¶ÔÏó
+            //å†™å…¥Excelå¯¹è±¡
             wwb.write();
             wwb.close();
         } catch (Exception e)
@@ -97,23 +97,23 @@ public class XLSDemo
             YTLogger.logDebug(e);
         } finally
         {
-            // ²Ù×÷Íê³ÉÊ±£¬¹Ø±Õ¶ÔÏó£¬ÊÍ·ÅÕ¼ÓÃµÄÄÚ´æ¿Õ¼ä
+            // æ“ä½œå®Œæˆæ—¶ï¼Œå…³é—­å¯¹è±¡ï¼Œé‡Šæ”¾å ç”¨çš„å†…å­˜ç©ºé—´
             workbook.close();
         }
     }
     
     /**
-     * ²åÈëÊı¾İ
-     * @param wwb WritableWorkbook : ¹¤×÷²¾
-     * @param dataSheet WritableSheet : ¹¤×÷±í
+     * æ’å…¥æ•°æ®
+     * @param wwb WritableWorkbook : å·¥ä½œç°¿
+     * @param dataSheet WritableSheet : å·¥ä½œè¡¨
      * @throws RowsExceededException
      * @throws WriteException
      */
     private void insertData(WritableWorkbook wwb, WritableSheet dataSheet, Vector vecData) throws RowsExceededException, WriteException
     {
-        // »ñµÃ±êÌâµ¥Ôª¸ñ¶ÔÏó        
-        modiStrCell(dataSheet, 2, 0, "¹¤ÉÌÒøĞĞ½­ËÕÊ¡·ÖĞĞ ¸öÈËÍøÉÏÒøĞĞÒµÎñÖÖÀà/¿ªÏú»§Ã÷Ï¸±¨±í£¨2005-12£©", null);
-        // ĞŞ¸ÄÊı¾İµ¥Ôª¸ñÊı¾İ
+        // è·å¾—æ ‡é¢˜å•å…ƒæ ¼å¯¹è±¡        
+        modiStrCell(dataSheet, 2, 0, "å·¥å•†é“¶è¡Œæ±Ÿè‹çœåˆ†è¡Œ ä¸ªäººç½‘ä¸Šé“¶è¡Œä¸šåŠ¡ç§ç±»/å¼€é”€æˆ·æ˜ç»†æŠ¥è¡¨ï¼ˆ2005-12ï¼‰", null);
+        // ä¿®æ”¹æ•°æ®å•å…ƒæ ¼æ•°æ®
         for(int i = 0; i < vecData.size(); i ++)
         {
             VireObj obj = (VireObj)vecData.get(i);
@@ -127,12 +127,12 @@ public class XLSDemo
             modiNumCell(dataSheet, 7, TITLE_LENGTH + i, obj.getMonthOutCount(), null);
             modiNumCell(dataSheet, 8, TITLE_LENGTH + i, obj.getMonthOutMoney(), null);
         }    
-        // É¾³ı¿ÕĞĞ
+        // åˆ é™¤ç©ºè¡Œ
         for (int j = vecData.size() + TITLE_LENGTH; j < SHEET_HEIGHT; j++)
         {
             dataSheet.removeRow(vecData.size() + TITLE_LENGTH);
         }        
-        // ²åÈë¹«Ê½
+        // æ’å…¥å…¬å¼
         for(int i = 2; i < SHEET_WIDTH; i ++)
         {
             modiFormulaCell(dataSheet, i, vecData.size() + TITLE_LENGTH, 8, vecData.size() + TITLE_LENGTH, null);
@@ -140,20 +140,20 @@ public class XLSDemo
     }
 
     /**
-     * ĞŞ¸Ä×Ö·ûµ¥Ôª¸ñµÄÖµ
-     * @param dataSheet WritableSheet : ¹¤×÷±í
-     * @param col int : ÁĞ
-     * @param row int : ĞĞ
-     * @param str String : ×Ö·û
-     * @param format CellFormat : µ¥Ôª¸ñµÄÑùÊ½
+     * ä¿®æ”¹å­—ç¬¦å•å…ƒæ ¼çš„å€¼
+     * @param dataSheet WritableSheet : å·¥ä½œè¡¨
+     * @param col int : åˆ—
+     * @param row int : è¡Œ
+     * @param str String : å­—ç¬¦
+     * @param format CellFormat : å•å…ƒæ ¼çš„æ ·å¼
      * @throws RowsExceededException
      * @throws WriteException
      */
     private void modiStrCell(WritableSheet dataSheet, int col, int row, String str, CellFormat format) throws RowsExceededException, WriteException
     {
-        // »ñµÃµ¥Ôª¸ñ¶ÔÏó
+        // è·å¾—å•å…ƒæ ¼å¯¹è±¡
         WritableCell cell = dataSheet.getWritableCell(col, row);
-        // ÅĞ¶Ïµ¥Ôª¸ñµÄÀàĞÍ, ×ö³öÏàÓ¦µÄ×ª»¯
+        // åˆ¤æ–­å•å…ƒæ ¼çš„ç±»å‹, åšå‡ºç›¸åº”çš„è½¬åŒ–
         if (cell.getType() == CellType.EMPTY)
         {
             Label lbl = new Label(col, row, str);
@@ -171,27 +171,27 @@ public class XLSDemo
             lbl.setString(str);
         } else if (cell.getType() == CellType.NUMBER)
         {
-            // Êı×Öµ¥Ôª¸ñĞŞ¸Ä
+            // æ•°å­—å•å…ƒæ ¼ä¿®æ”¹
             Number n1 = (Number)cell;
             n1.setValue(42.05);
         }
     }
     
     /**
-     * ĞŞ¸ÄÊı×Öµ¥Ôª¸ñµÄÖµ
-     * @param dataSheet WritableSheet : ¹¤×÷±í
-     * @param col int : ÁĞ
-     * @param row int : ĞĞ
-     * @param num double : ÊıÖµ
-     * @param format CellFormat : µ¥Ôª¸ñµÄÑùÊ½
+     * ä¿®æ”¹æ•°å­—å•å…ƒæ ¼çš„å€¼
+     * @param dataSheet WritableSheet : å·¥ä½œè¡¨
+     * @param col int : åˆ—
+     * @param row int : è¡Œ
+     * @param num double : æ•°å€¼
+     * @param format CellFormat : å•å…ƒæ ¼çš„æ ·å¼
      * @throws RowsExceededException
      * @throws WriteException
      */
     private void modiNumCell(WritableSheet dataSheet, int col, int row, double num, CellFormat format) throws RowsExceededException, WriteException
     {
-        // »ñµÃµ¥Ôª¸ñ¶ÔÏó
+        // è·å¾—å•å…ƒæ ¼å¯¹è±¡
         WritableCell cell = dataSheet.getWritableCell(col, row);
-        // ÅĞ¶Ïµ¥Ôª¸ñµÄÀàĞÍ, ×ö³öÏàÓ¦µÄ×ª»¯
+        // åˆ¤æ–­å•å…ƒæ ¼çš„ç±»å‹, åšå‡ºç›¸åº”çš„è½¬åŒ–
         if (cell.getType() == CellType.EMPTY)
         {
             Number lbl = new Number(col, row, num);
@@ -205,7 +205,7 @@ public class XLSDemo
             dataSheet.addCell(lbl);
         } else if (cell.getType() == CellType.NUMBER)
         {
-            // Êı×Öµ¥Ôª¸ñĞŞ¸Ä
+            // æ•°å­—å•å…ƒæ ¼ä¿®æ”¹
             Number lbl = (Number)cell;
             lbl.setValue(num);
         } else if (cell.getType() == CellType.LABEL)
@@ -216,12 +216,12 @@ public class XLSDemo
     }
     
     /**
-     * ĞŞ¸Ä¹«Ê½µ¥Ôª¸ñµÄÖµ
-     * @param dataSheet WritableSheet : ¹¤×÷±í
-     * @param col int : ÁĞ
-     * @param row int : ĞĞ
-     * @param startPos int : ¿ªÊ¼Î»ÖÃ
-     * @param endPos int : ½áÊøÎ»ÖÃ
+     * ä¿®æ”¹å…¬å¼å•å…ƒæ ¼çš„å€¼
+     * @param dataSheet WritableSheet : å·¥ä½œè¡¨
+     * @param col int : åˆ—
+     * @param row int : è¡Œ
+     * @param startPos int : å¼€å§‹ä½ç½®
+     * @param endPos int : ç»“æŸä½ç½®
      * @param format
      * @throws RowsExceededException
      * @throws WriteException
@@ -229,11 +229,11 @@ public class XLSDemo
     private void modiFormulaCell(WritableSheet dataSheet, int col, int row, int startPos, int endPos, CellFormat format) throws RowsExceededException, WriteException
     {
         String f = getFormula(col, row, startPos, endPos);
-        // ²åÈë¹«Ê½£¨Ö»Ö§³Ö²åÈë£¬²»Ö§³ÖĞŞ¸Ä£©
+        // æ’å…¥å…¬å¼ï¼ˆåªæ”¯æŒæ’å…¥ï¼Œä¸æ”¯æŒä¿®æ”¹ï¼‰
         WritableCell cell = dataSheet.getWritableCell(col, row);
         if (cell.getType() == CellType.EMPTY)
         {                    
-            // ¹«Ê½µ¥Ôª¸ñ
+            // å…¬å¼å•å…ƒæ ¼
             Formula lbl = new Formula(col, row, f);
             if(null != format)
             {
@@ -250,11 +250,11 @@ public class XLSDemo
     }
     
     /**
-     * µÃµ½¹«Ê½
-     * @param col int : ÁĞ
-     * @param row int : ĞĞ
-     * @param startPos int : ¿ªÊ¼Î»ÖÃ
-     * @param endPos int : ½áÊøÎ»ÖÃ
+     * å¾—åˆ°å…¬å¼
+     * @param col int : åˆ—
+     * @param row int : è¡Œ
+     * @param startPos int : å¼€å§‹ä½ç½®
+     * @param endPos int : ç»“æŸä½ç½®
      * @return String
      * @throws RowsExceededException
      * @throws WriteException
@@ -265,7 +265,7 @@ public class XLSDemo
         char base = 'A';
         char c1 = base;
         StringBuffer formula = new StringBuffer(128);
-        // ×é×°¹«Ê½
+        // ç»„è£…å…¬å¼
         formula.append("SUM(");
         if (col <= 25)
         {
@@ -284,20 +284,20 @@ public class XLSDemo
     }
     
     /**
-     * ²åÈëÍ¼±í¹¤×÷±í
-     * @param wwb WritableWorkbook : ¹¤×÷²¾
-     * @param vecImg Vector : Í¼ÏñÁ´±í
+     * æ’å…¥å›¾è¡¨å·¥ä½œè¡¨
+     * @param wwb WritableWorkbook : å·¥ä½œç°¿
+     * @param vecImg Vector : å›¾åƒé“¾è¡¨
      * @throws RowsExceededException
      * @throws WriteException
      */
     private void insertImgsheet(WritableWorkbook wwb, Vector vecImg)
             throws RowsExceededException, WriteException
     {
-        // ²åÈëÍ¼Ïñ
+        // æ’å…¥å›¾åƒ
         WritableSheet imgSheet;
         if((wwb.getSheets()).length < 2)
         {
-            imgSheet = wwb.createSheet("Í¼±í", 1);
+            imgSheet = wwb.createSheet("å›¾è¡¨", 1);
         } else
         {
             imgSheet = wwb.getSheet(1);
@@ -306,7 +306,7 @@ public class XLSDemo
         for (int i = 0; i < vecImg.size(); i++)
         {
             ChartImg chart = (ChartImg) vecImg.get(i);
-            // ²åÈëÍ¼Ïñ±êÌâ
+            // æ’å…¥å›¾åƒæ ‡é¢˜
             Label lbl = new Label(0, 2 + 20 * i, chart.getImgTitle());
             WritableFont font = new WritableFont(WritableFont.ARIAL,
                     WritableFont.DEFAULT_POINT_SIZE, WritableFont.NO_BOLD, false,
@@ -317,19 +317,19 @@ public class XLSDemo
             imgSheet.mergeCells(0, 2 + 20 * i, 9, 2 + 20 * i);
             lbl.setCellFormat(background);
             imgSheet.addCell(lbl);
-            // ²åÈëÍ¼Ïñµ¥Ôª¸ñ
+            // æ’å…¥å›¾åƒå•å…ƒæ ¼
             insertImgCell(imgSheet, 2, 4 + 20 * i, 8, 15, chart.getImgName());
         }
     }
 
     /**
-     * ²åÈëÍ¼Ïñµ½µ¥Ôª¸ñ£¨Í¼Ïñ¸ñÊ½Ö»Ö§³Öpng£©
-     * @param dataSheet WritableSheet : ¹¤×÷±í
-     * @param col int : ÁĞ
-     * @param row int : ĞĞ
-     * @param width int : ¿í
-     * @param height int : ¸ß
-     * @param imgName String : Í¼ÏñµÄÈ«Â·¾¶
+     * æ’å…¥å›¾åƒåˆ°å•å…ƒæ ¼ï¼ˆå›¾åƒæ ¼å¼åªæ”¯æŒpngï¼‰
+     * @param dataSheet WritableSheet : å·¥ä½œè¡¨
+     * @param col int : åˆ—
+     * @param row int : è¡Œ
+     * @param width int : å®½
+     * @param height int : é«˜
+     * @param imgName String : å›¾åƒçš„å…¨è·¯å¾„
      * @throws RowsExceededException
      * @throws WriteException
      */
@@ -342,7 +342,7 @@ public class XLSDemo
     }
     
     /**
-     * ²âÊÔ
+     * æµ‹è¯•
      * @param args
      */
     public static void main(String[] args)

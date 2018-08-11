@@ -5,7 +5,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 
 /**
- * ���ܣ��Զ���Log4j��־�࣬Log4j�������ļ��ڴ˶���
+ * 功能：自定义Log4j日志类，Log4j的配置文件在此定义
  * 
  * @author li
  * 

@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Function:¶ÁÈ¡ÍøÒ³ÉÏµÄHtmlÔ´Âë
+ * Function:è¯»å–ç½‘é¡µä¸Šçš„Htmlæºç 
  * 
  * @author li
  * 
@@ -22,43 +22,43 @@ public class ReadHtml {
 
 	public static void getContext(String html) {
 		// List<String> resultList = new ArrayList<String>();
-		Pattern p = Pattern.compile("<div align=\"center\">([^</div>]*)");// Æ¥Åä<title>¿ªÍ·£¬</title>½áÎ²µÄÎÄµµ
-		Matcher m = p.matcher(html);// ¿ªÊ¼±àÒë
+		Pattern p = Pattern.compile("<div align=\"center\">([^</div>]*)");// åŒ¹é…<title>å¼€å¤´ï¼Œ</title>ç»“å°¾çš„æ–‡æ¡£
+		Matcher m = p.matcher(html);// å¼€å§‹ç¼–è¯‘
 		while (m.find()) {
 			
-			System.out.println(m.group(1));// »ñÈ¡±»Æ¥ÅäµÄ²¿·Ö
+			System.out.println(m.group(1));// è·å–è¢«åŒ¹é…çš„éƒ¨åˆ†
 		}
 	}
 
 	void display() {
 		//byte buf[] = new byte[1024];
 		try {
-			// System.out.print("ÇëÊäÈëÎÄ¼şµÄURLµØÖ·:");
-			// ¶ÁÈ¡ÓÃ»§ÊäÈëµÄURL
+			// System.out.print("è¯·è¾“å…¥æ–‡ä»¶çš„URLåœ°å€:");
+			// è¯»å–ç”¨æˆ·è¾“å…¥çš„URL
 			// InputStream consoleis = System.in;
 			// int count = consoleis.read(buf);
 			// String addr = new String(buf, 0, count);
-			// System.out.println("ÄÚÈİÀàĞÍ: " + addr);
-			// ½«ÓÃ»§ÊäÈëµÄURL×Ö·û´®´«ÈëURLÀà¶ÔÏó
+			// System.out.println("å†…å®¹ç±»å‹: " + addr);
+			// å°†ç”¨æˆ·è¾“å…¥çš„URLå­—ç¬¦ä¸²ä¼ å…¥URLç±»å¯¹è±¡
 			String addr = "http://lotterychart.sports.cn/table/index_letouzh_table.jsp?lotteryid=41&startNum=09056&endNum=09069";
 			URL url = new URL(addr);
-			// ´´½¨URLConnection¶ÔÏó£¬ÓÃURLµÄopenConnection·½·¨½«Á¬½ÓÍ¨¹ı·µ»Ø¸øURLConnectionµÄ¶ÔÏó
-			// Êµ¼ÊÉÏURLµÄopenConnectionµÄ·µ»ØÖµ¾ÍÊÇÒ»¸öURLConnection
+			// åˆ›å»ºURLConnectionå¯¹è±¡ï¼Œç”¨URLçš„openConnectionæ–¹æ³•å°†è¿æ¥é€šè¿‡è¿”å›ç»™URLConnectionçš„å¯¹è±¡
+			// å®é™…ä¸ŠURLçš„openConnectionçš„è¿”å›å€¼å°±æ˜¯ä¸€ä¸ªURLConnection
 			URLConnection c = url.openConnection(); // *
-			// ÓÃURLConnectionµÄconnect()·½·¨½¨Á¢Á¬½Ó
+			// ç”¨URLConnectionçš„connect()æ–¹æ³•å»ºç«‹è¿æ¥
 			c.connect(); // *
-			// ÏÔÊ¾¸ÃÁ¬½ÓµÄÏà¹ØĞÅÏ¢£¬ÕâĞ©¶¼ÊÇURLConnectionµÄ·½·¨
-			// System.out.println("ÄÚÈİÀàĞÍ: " + c.getContentType());
-			// System.out.println("ÄÚÈİ³¤¶È: " + c.getContentLength());
-			// System.out.println("´´½¨ÈÕÆÚ: " + new Date(c.getDate()));
-			// System.out.println("×îºóĞŞ¸ÄÈÕÆÚ: " + new Date(c.getLastModified()));
-			// System.out.println("ÖÕÖ¹ÈÕÆÚ: " + new Date(c.getExpiration()));
+			// æ˜¾ç¤ºè¯¥è¿æ¥çš„ç›¸å…³ä¿¡æ¯ï¼Œè¿™äº›éƒ½æ˜¯URLConnectionçš„æ–¹æ³•
+			// System.out.println("å†…å®¹ç±»å‹: " + c.getContentType());
+			// System.out.println("å†…å®¹é•¿åº¦: " + c.getContentLength());
+			// System.out.println("åˆ›å»ºæ—¥æœŸ: " + new Date(c.getDate()));
+			// System.out.println("æœ€åä¿®æ”¹æ—¥æœŸ: " + new Date(c.getLastModified()));
+			// System.out.println("ç»ˆæ­¢æ—¥æœŸ: " + new Date(c.getExpiration()));
 
 			InputStream is = c.getInputStream(); // *
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			String str = null;
-			int sid = 0; // µ½µÚ76ĞĞÊ±²Å´òÓ¡
+			int sid = 0; // åˆ°ç¬¬76è¡Œæ—¶æ‰æ‰“å°
 			while ((str = br.readLine()) != null) {
 				// System.out.println(str);
 				sid = sid + 1;
@@ -68,7 +68,7 @@ public class ReadHtml {
 			}
 
 		} catch (IOException e) {
-			System.out.println("ÊäÈëµÄÍøÖ·ÓĞÎó,»òµçÄÔÃ»ÓĞÁªÍø.ÏµÍ³´íÎóĞÅÏ¢:" +e.getMessage());
+			System.out.println("è¾“å…¥çš„ç½‘å€æœ‰è¯¯,æˆ–ç”µè„‘æ²¡æœ‰è”ç½‘.ç³»ç»Ÿé”™è¯¯ä¿¡æ¯:" +e.getMessage());
 		}
 	}
 

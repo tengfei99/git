@@ -12,26 +12,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Function:¶ÁÈ¡ÍøÒ³ÉÏµÄHtmlÔ´ÂëÖĞÖ¸¶¨µÄÊı¾İ
+ * Function:è¯»å–ç½‘é¡µä¸Šçš„Htmlæºç ä¸­æŒ‡å®šçš„æ•°æ®
  * 
  * @author lishicun
  * 
  */
 public class SsqData {
 
-	// Æ¥Åä<td id=">¿ªÍ·£¬</td>½áÎ²µÄÎÄµµ
+	// åŒ¹é…<td id=">å¼€å¤´ï¼Œ</td>ç»“å°¾çš„æ–‡æ¡£
 	Pattern p = Pattern.compile("<td.*id=\".*\">(.+)</td>");
 	Matcher m = null;
 	String data = null;
 
 	private String getContext(String html) {
 
-		m = p.matcher(html);// ¿ªÊ¼±àÒë
-		data = null; // ÒòÊÇÀàµÄ±äÁ¿,ÕâÀïÒªÇåµô,·ñÔò±£³ÖÇ°ÏÈÖµ
+		m = p.matcher(html);// å¼€å§‹ç¼–è¯‘
+		data = null; // å› æ˜¯ç±»çš„å˜é‡,è¿™é‡Œè¦æ¸…æ‰,å¦åˆ™ä¿æŒå‰å…ˆå€¼
 
 		while (m.find()) {
 
-			data = m.group(1);// »ñÈ¡±»Æ¥ÅäµÄ²¿·Ö
+			data = m.group(1);// è·å–è¢«åŒ¹é…çš„éƒ¨åˆ†
 		}
 		// System.out.println(data);
 		return data;
@@ -40,9 +40,9 @@ public class SsqData {
 	/**
 	 * 
 	 * @param number
-	 *            ×ªÈëµÄÆÚÊı
+	 *            è½¬å…¥çš„æœŸæ•°
 	 * @param flag
-	 *            ÊÇ·ñÖ»Éú³É10ÆÚ,È¡Öµ:0:°´ÊäÈëµÄÆÚÊıÏÂÔØ,1:Ö»ÏÂ10ÆÚ
+	 *            æ˜¯å¦åªç”Ÿæˆ10æœŸ,å–å€¼:0:æŒ‰è¾“å…¥çš„æœŸæ•°ä¸‹è½½,1:åªä¸‹10æœŸ
 	 */
 	void getDataAndWriteFile(String number, String flag) {
 
@@ -50,7 +50,7 @@ public class SsqData {
 
 			String addr = null;
 
-			// ÎªfalseÔòÇå¿ÕÔ­ÎÄ¼şÔÙĞ´Èë,trueÔò×·¼ÓĞ´Èë
+			// ä¸ºfalseåˆ™æ¸…ç©ºåŸæ–‡ä»¶å†å†™å…¥,trueåˆ™è¿½åŠ å†™å…¥
 			FileWriter outfile1 = null;
 
 			if (flag.equals("0")) {
@@ -67,7 +67,7 @@ public class SsqData {
 
 			URL url = new URL(addr);
 			URLConnection c = url.openConnection();
-			// ÓÃURLConnectionµÄconnect()·½·¨½¨Á¢Á¬½Ó
+			// ç”¨URLConnectionçš„connect()æ–¹æ³•å»ºç«‹è¿æ¥
 			c.connect();
 			InputStream is = c.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is);
@@ -78,11 +78,11 @@ public class SsqData {
 			int sid = 0;
 			int cid = 1;
 			int times = 0;
-			int i = 154; // µ½µÚsidĞĞÊ±²Å´òÓ¡
+			int i = 154; // åˆ°ç¬¬sidè¡Œæ—¶æ‰æ‰“å°
 			int j = 1;
 			String st = "";
 
-			times = Integer.valueOf(number).intValue() * 9; // ¹²´òÓ¡µÄÆÚÊı,Ã¿Ò»ÆÚÏà¸ô9ĞĞ£¬¹ÊÊ£ÒÔ9
+			times = Integer.valueOf(number).intValue() * 9; // å…±æ‰“å°çš„æœŸæ•°,æ¯ä¸€æœŸç›¸éš”9è¡Œï¼Œæ•…å‰©ä»¥9
 
 			while ((str = br.readLine()) != null) {
 				sid = sid + 1;
@@ -122,13 +122,13 @@ public class SsqData {
 			outbuffer1.flush();
 			outfile1.close();
 			System.out.println();
-			System.out.println("ÏÂÔØĞÅÏ¢£ººÅÂëÊı¾İÏÂÔØÍê±Ï£¡");
+			System.out.println("ä¸‹è½½ä¿¡æ¯ï¼šå·ç æ•°æ®ä¸‹è½½å®Œæ¯•ï¼");
 			System.out.println();
 			System.out.println("===========================================");
 
 		} catch (IOException e) {
 			System.out.println();
-			System.out.println("ÏÂÔØĞÅÏ¢£ºÏÂÔØÍøÖ·ÓĞÎó,»òµçÄÔÃ»ÓĞÁªÍø.ÏµÍ³´íÎóĞÅÏ¢:" + e.getMessage());
+			System.out.println("ä¸‹è½½ä¿¡æ¯ï¼šä¸‹è½½ç½‘å€æœ‰è¯¯,æˆ–ç”µè„‘æ²¡æœ‰è”ç½‘.ç³»ç»Ÿé”™è¯¯ä¿¡æ¯:" + e.getMessage());
 			System.out.println();
 			System.out.println("===========================================");
 		}
@@ -137,7 +137,7 @@ public class SsqData {
 	public static void main(String[] args) throws InterruptedException {
 
 		// if (args.length != 1) {
-		// System.out.println("ÇëÑ¡ÔñÆÚÊı£¬ÔÙ½øĞĞ²Ù×÷¡£");
+		// System.out.println("è¯·é€‰æ‹©æœŸæ•°ï¼Œå†è¿›è¡Œæ“ä½œã€‚");
 		// System.exit(0);
 		// }
 
@@ -145,7 +145,7 @@ public class SsqData {
 
 		System.out.println("===========================================");
 		System.out.println();
-		System.out.println("ÕıÔÚ´ÓÖĞ²ÊÍøÏÂÔØºÅÂëÊı¾İ,´Ë´°¿ÚÇë²»Òª¹Ø±Õ,ÇëÉÔºò¡­¡­");
+		System.out.println("æ­£åœ¨ä»ä¸­å½©ç½‘ä¸‹è½½å·ç æ•°æ®,æ­¤çª—å£è¯·ä¸è¦å…³é—­,è¯·ç¨å€™â€¦â€¦");
 		System.out.println();
 		System.out.println("===========================================");
 		ld.getDataAndWriteFile("10", "1");

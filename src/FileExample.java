@@ -10,7 +10,7 @@ public class FileExample {
 	String FilePath = null;
 
 	/**
-	 * ½«Ö¸¶¨µÄ×Ö·û´®¼ÓÃÜÈ»ºóĞ´ÈëÖ¸¶¨ÎÄ¼ş
+	 * å°†æŒ‡å®šçš„å­—ç¬¦ä¸²åŠ å¯†ç„¶åå†™å…¥æŒ‡å®šæ–‡ä»¶
 	 * 
 	 * @param FileContent
 	 */
@@ -19,13 +19,13 @@ public class FileExample {
 		try {
 			FileOutputStream outf = new FileOutputStream(FilePath);
 			BufferedOutputStream bufferout = new BufferedOutputStream(outf);
-			// FileContent = des.getEncString(FileContent);//¼ÓÃÜ
+			// FileContent = des.getEncString(FileContent);//åŠ å¯†
 			byte b[] = FileContent.getBytes();
 			bufferout.write(b);
 			bufferout.flush();
 			bufferout.close();
 
-			System.out.println("¼ÓÃÜºóĞ´ÈëÎÄ¼şÍê±Ï£¡ÎÄ¼şÂ·¾¶£º");
+			System.out.println("åŠ å¯†åå†™å…¥æ–‡ä»¶å®Œæ¯•ï¼æ–‡ä»¶è·¯å¾„ï¼š");
 
 		} catch (IOException ioe) {
 			System.out.println(ioe.getMessage());
@@ -33,26 +33,26 @@ public class FileExample {
 	}
 
 	/**
-	 * ¶ÁÈ¡ÎÄ¼şµÄÄÚÈİ²¢½âÃÜ£¬È»ºóĞ´ÈëÖ¸¶¨ÎÄ¼ş
+	 * è¯»å–æ–‡ä»¶çš„å†…å®¹å¹¶è§£å¯†ï¼Œç„¶åå†™å…¥æŒ‡å®šæ–‡ä»¶
 	 */
 	public void ReadFile() {
 		int size;
 		try {
 			FileInputStream f = new FileInputStream(FilePath);
 			size = f.available();
-			System.out.println("ÎÄ¼ş×Ü¼Æ¿É¶ÁµÄ×Ö½ÚÊı: " + size);
+			System.out.println("æ–‡ä»¶æ€»è®¡å¯è¯»çš„å­—èŠ‚æ•°: " + size);
 			BufferedInputStream buffer1 = new BufferedInputStream(f);
 			byte bufferArray[] = new byte[size];
 			int n = 0;
-			System.out.println("¿ªÊ¼½«¼ÓÃÜ/½âÃÜºóµÄÎÄ¼şĞ´ÈëÎÄµµ£º");
+			System.out.println("å¼€å§‹å°†åŠ å¯†/è§£å¯†åçš„æ–‡ä»¶å†™å…¥æ–‡æ¡£ï¼š");
 			while ((n = buffer1.read(bufferArray)) != -1) {
 				String temp = new String(bufferArray, 0, n);
 				this.WriteFile(temp);
-				System.out.println("½«½ü¹¤ÆÚ");
+				System.out.println("å°†è¿‘å·¥æœŸ");
 			}
 			buffer1.close();
 			f.close();
-			System.out.println("Íê±Ï£¡");
+			System.out.println("å®Œæ¯•ï¼");
 
 		} catch (FileNotFoundException fnfe) {
 			System.out.println(fnfe.getMessage());

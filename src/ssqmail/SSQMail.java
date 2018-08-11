@@ -27,7 +27,7 @@ import javax.mail.Transport;
 import mylog4j.Log;
 
 /**
- * ¹¦ÄÜ£ºÓÚÖÜ¶ş£¬ÖÜËÄ£¬ÖÜÈÕÕâÈıÈÕµÄ22:15:00·¢ËÍË«É«Çò¿ª½±ĞÅÏ¢µ½Ö¸¶¨ÓÊÏä.
+ * åŠŸèƒ½ï¼šäºå‘¨äºŒï¼Œå‘¨å››ï¼Œå‘¨æ—¥è¿™ä¸‰æ—¥çš„22:15:00å‘é€åŒè‰²çƒå¼€å¥–ä¿¡æ¯åˆ°æŒ‡å®šé‚®ç®±.
  * 
  * @author lishicun
  * 
@@ -38,7 +38,7 @@ public class SSQMail extends Thread {
 	}
 
 	/**
-	 * ÒÔhtmlĞÎÊ½·¢ËÍÓÊ¼ş
+	 * ä»¥htmlå½¢å¼å‘é€é‚®ä»¶
 	 * 
 	 * @param body
 	 * @return
@@ -47,10 +47,10 @@ public class SSQMail extends Thread {
 	private static Multipart getAlternativeMultipart(String body)
 			throws MessagingException {
 
-		Multipart alternative = new MimeMultipart("alternative");// ¶şÑ¡Ò»ÏûÏ¢
+		Multipart alternative = new MimeMultipart("alternative");// äºŒé€‰ä¸€æ¶ˆæ¯
 
 		BodyPart text = new MimeBodyPart();
-		text.setContent("Çëä¯ÀÀHTML", "text/plain;charset=UTF-8");
+		text.setContent("è¯·æµè§ˆHTML", "text/plain;charset=UTF-8");
 		alternative.addBodyPart(text);
 
 		BodyPart html = new MimeBodyPart();
@@ -61,7 +61,7 @@ public class SSQMail extends Thread {
 	}
 
 	/**
-	 * ·¢ËÍÓÊ¼şµÄ·½·¨
+	 * å‘é€é‚®ä»¶çš„æ–¹æ³•
 	 * 
 	 * @param Subject
 	 * @param Content
@@ -101,14 +101,14 @@ public class SSQMail extends Thread {
 			prop.setProperty("mail.transport.protocol", "smtp");
 			prop.setProperty("mail.smtp.auth", "true");
 
-			Session session = Session.getInstance(prop, new Authenticator() {// ÓÃ»§Á¬½ÓÈÏÖ¤
+			Session session = Session.getInstance(prop, new Authenticator() {// ç”¨æˆ·è¿æ¥è®¤è¯
 						public PasswordAuthentication getPasswordAuthentication() {
 							return new PasswordAuthentication(username,
 									password);
 						}
 					});
 
-			session.setDebug(true);// ¿ªÆôµ÷ÊÔ
+			session.setDebug(true);// å¼€å¯è°ƒè¯•
 
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(from));
@@ -117,14 +117,14 @@ public class SSQMail extends Thread {
 			message.setSubject(Subject);
 			message.setSentDate(new Date());
 
-			message.setContent(getAlternativeMultipart(Content));// ·¢ËÍalternativeÓÊ¼ş
+			message.setContent(getAlternativeMultipart(Content));// å‘é€alternativeé‚®ä»¶
 
-			// message.saveChanges();// ÔÚÓÊ¼ş·şÎñÖĞ±£´æ ËÍµÄÓÊ¼ş
+			// message.saveChanges();// åœ¨é‚®ä»¶æœåŠ¡ä¸­ä¿å­˜ é€çš„é‚®ä»¶
 
 			Transport trans = session.getTransport();
 			trans.connect(server, username, password);
 			trans.sendMessage(message, message
-					.getRecipients(Message.RecipientType.TO));// ·¢ËÍ
+					.getRecipients(Message.RecipientType.TO));// å‘é€
 			trans.close();
 
 			Log.info("The mail have sent successfully!");
@@ -139,7 +139,7 @@ public class SSQMail extends Thread {
 	}
 
 	/**
-	 * »ñÈ¡Ö¸¶¨ÍøÒ³µÄHtml´úÂë
+	 * è·å–æŒ‡å®šç½‘é¡µçš„Htmlä»£ç 
 	 * 
 	 * @param url
 	 * @return
@@ -155,7 +155,7 @@ public class SSQMail extends Thread {
 			URLConnection c = addr.openConnection();
 			c.connect();
 			InputStream is = c.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is, "UTF-8");// Ö¸¶¨UTF-8×Ö·û¼¯£¬½â¾öÂÒÂë
+			InputStreamReader isr = new InputStreamReader(is, "UTF-8");// æŒ‡å®šUTF-8å­—ç¬¦é›†ï¼Œè§£å†³ä¹±ç 
 			BufferedReader br = new BufferedReader(isr);
 
 			String str = null;
@@ -174,18 +174,18 @@ public class SSQMail extends Thread {
 	}
 
 	/**
-	 * ·µ»Øµ±Ç°ÈÕÆÚÊÇĞÇÆÚ¼¸
+	 * è¿”å›å½“å‰æ—¥æœŸæ˜¯æ˜ŸæœŸå‡ 
 	 * 
 	 * @return
 	 */
 	public int getWeek() {
-		// ÔÙ×ª»»ÎªÊ±¼ä
+		// å†è½¬æ¢ä¸ºæ—¶é—´
 		Date date = new Date();
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		int week = c.get(Calendar.DAY_OF_WEEK);
-		// hourÖĞ´æµÄ¾ÍÊÇĞÇÆÚ¼¸ÁË£¬Æä·¶Î§ 1~7
-		// 1=ĞÇÆÚÈÕ 7=ĞÇÆÚÁù£¬ÆäËûÀàÍÆ
+		// hourä¸­å­˜çš„å°±æ˜¯æ˜ŸæœŸå‡ äº†ï¼Œå…¶èŒƒå›´ 1~7
+		// 1=æ˜ŸæœŸæ—¥ 7=æ˜ŸæœŸå…­ï¼Œå…¶ä»–ç±»æ¨
 		return week;// new SimpleDateFormat("EEEE").format(c.getTime());
 	}
 
@@ -210,14 +210,14 @@ public class SSQMail extends Thread {
 
 				int week = mail.getWeek();
 
-				// ÖÜ¶ş£¬ÖÜËÄ£¬ÖÜÈÕ¿ª½±£¬ÓÚÕâÈıÈÕµÄ22:30:00·¢ËÍ¿ª½±ĞÅÏ¢
+				// å‘¨äºŒï¼Œå‘¨å››ï¼Œå‘¨æ—¥å¼€å¥–ï¼Œäºè¿™ä¸‰æ—¥çš„22:30:00å‘é€å¼€å¥–ä¿¡æ¯
 				if (week == 1 || week == 3 || week == 5) {
 
 					if ("22:40:00".equals(dateString.substring(11, 19))) {
 						long tf = System.currentTimeMillis();
 
 						String htmlSource = mail.getWebContent(url);
-						mail.sendMail("SSQ×ÊÑ¶(" + dateString + ")", htmlSource);
+						mail.sendMail("SSQèµ„è®¯(" + dateString + ")", htmlSource);
 
 						long tf2 = (System.currentTimeMillis() - tf) / 1000;
 

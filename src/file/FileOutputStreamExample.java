@@ -22,7 +22,7 @@ public class FileOutputStreamExample {
 		try {
 			outf = new FileOutputStream("newFile1.jsp");
 		} catch (FileNotFoundException e) {
-			System.out.print("Ã»ÓÐÕÒµ½ÎÄ¼þ¡£");
+			System.out.print("æ²¡æœ‰æ‰¾åˆ°æ–‡ä»¶ã€‚");
 		}
 
 		BufferedOutputStream bufferout = new BufferedOutputStream(outf);

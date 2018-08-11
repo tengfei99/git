@@ -12,27 +12,27 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Function:¶ÁÈ¡ÍøÒ³ÉÏµÄHtmlÔ´ÂëÖĞÖ¸¶¨µÄÊı¾İ
+ * Function:è¯»å–ç½‘é¡µä¸Šçš„Htmlæºç ä¸­æŒ‡å®šçš„æ•°æ®
  * 
  * @author lishicun
  * 
  */
 public class LotteryData {
 
-	// Æ¥Åä<div align="center">¿ªÍ·£¬</div>½áÎ²µÄÎÄµµ
+	// åŒ¹é…<div align="center">å¼€å¤´ï¼Œ</div>ç»“å°¾çš„æ–‡æ¡£
 	Pattern p = Pattern.compile("<div align=\"center\">([^</div>]*)");
 	Matcher m = null;
 	String data = null;
 
-	// µÃµ½htmlµÄdivÀïµÄÄÚÈİ
+	// å¾—åˆ°htmlçš„divé‡Œçš„å†…å®¹
 	private String getContext(String html) {
 
-		m = p.matcher(html);// ¿ªÊ¼±àÒë
-		data = null; // ÒòÊÇÀàµÄ±äÁ¿,ÕâÀïÒªÇåµô,·ñÔò±£³ÖÇ°ÏÈÖµ
+		m = p.matcher(html);// å¼€å§‹ç¼–è¯‘
+		data = null; // å› æ˜¯ç±»çš„å˜é‡,è¿™é‡Œè¦æ¸…æ‰,å¦åˆ™ä¿æŒå‰å…ˆå€¼
 
 		while (m.find()) {
 
-			data = m.group(1);// »ñÈ¡±»Æ¥ÅäµÄ²¿·Ö
+			data = m.group(1);// è·å–è¢«åŒ¹é…çš„éƒ¨åˆ†
 		}
 
 		return data;
@@ -42,7 +42,7 @@ public class LotteryData {
 
 		try {
 
-			// ÎªfalseÔòÇå¿ÕÔ­ÎÄ¼şÔÙĞ´Èë,trueÔò×·¼ÓĞ´Èë
+			// ä¸ºfalseåˆ™æ¸…ç©ºåŸæ–‡ä»¶å†å†™å…¥,trueåˆ™è¿½åŠ å†™å…¥
 			FileWriter outfile1 = new FileWriter("lotterydata.txt", false);
 			BufferedWriter outbuffer1 = new BufferedWriter(outfile1);
 
@@ -50,14 +50,14 @@ public class LotteryData {
 					+ startNum + "&endNum=" + endNum;
 			URL url = new URL(addr);
 			URLConnection c = url.openConnection();
-			// ÓÃURLConnectionµÄconnect()·½·¨½¨Á¢Á¬½Ó
+			// ç”¨URLConnectionçš„connect()æ–¹æ³•å»ºç«‹è¿æ¥
 			c.connect();
 			InputStream is = c.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			String str = null;
 			String tem = null;
-			int sid = 0; // µ½µÚ76ĞĞÊ±²Å´òÓ¡
+			int sid = 0; // åˆ°ç¬¬76è¡Œæ—¶æ‰æ‰“å°
 			while ((str = br.readLine()) != null) {
 				sid = sid + 1;
 				tem = getContext(str);
@@ -73,13 +73,13 @@ public class LotteryData {
 			outbuffer1.flush();
 			outfile1.close();
 			System.out.println();
-			System.out.println("ÏÂÔØĞÅÏ¢£ººÅÂëÊı¾İÏÂÔØÍê±Ï£¡");
+			System.out.println("ä¸‹è½½ä¿¡æ¯ï¼šå·ç æ•°æ®ä¸‹è½½å®Œæ¯•ï¼");
 			System.out.println();
 			System.out.println("===========================================");
 
 		} catch (IOException e) {
 			System.out.println();
-			System.out.println("ÏÂÔØĞÅÏ¢£ºÏÂÔØÍøÖ·ÓĞÎó,»òµçÄÔÃ»ÓĞÁªÍø.ÏµÍ³´íÎóĞÅÏ¢:" + e.getMessage());
+			System.out.println("ä¸‹è½½ä¿¡æ¯ï¼šä¸‹è½½ç½‘å€æœ‰è¯¯,æˆ–ç”µè„‘æ²¡æœ‰è”ç½‘.ç³»ç»Ÿé”™è¯¯ä¿¡æ¯:" + e.getMessage());
 			System.out.println();
 			System.out.println("===========================================");
 		}
@@ -88,14 +88,14 @@ public class LotteryData {
 	public static void main(String[] args) throws InterruptedException {
 
 		if (args.length != 2) {
-			System.out.println(" ÇëÊäÈëÁ½¸ö²ÎÊı,µÚÒ»¸ö²ÎÊıÎª¿ªÊ¼µÄÆÚºÅ,µÚ¶ş¸ö²ÎÊıÎª½áÊøµÄÆÚºÅ!ÆÚºÅ¸ñÊ½:09066.");
+			System.out.println(" è¯·è¾“å…¥ä¸¤ä¸ªå‚æ•°,ç¬¬ä¸€ä¸ªå‚æ•°ä¸ºå¼€å§‹çš„æœŸå·,ç¬¬äºŒä¸ªå‚æ•°ä¸ºç»“æŸçš„æœŸå·!æœŸå·æ ¼å¼:09066.");
 			System.exit(0);
 		}
 		LotteryData ld = new LotteryData();
 
 		System.out.println("===========================================");
 		System.out.println();
-		System.out.println("ÕıÔÚ´ÓÌå²ÊÍøÏÂÔØºÅÂëÊı¾İ,´Ë´°¿ÚÇë²»Òª¹Ø±Õ,ÇëÉÔºò¡­¡­");
+		System.out.println("æ­£åœ¨ä»ä½“å½©ç½‘ä¸‹è½½å·ç æ•°æ®,æ­¤çª—å£è¯·ä¸è¦å…³é—­,è¯·ç¨å€™â€¦â€¦");
 		System.out.println();
 		System.out.println("===========================================");
 		ld.getDataAndWriteFile(args[0].trim(), args[1].trim());

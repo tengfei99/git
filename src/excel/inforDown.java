@@ -17,11 +17,11 @@ import java.awt.Color;
 import javax.swing.border.*;
 
 /**
- * <p>Title: ±N¸ê®Æ¾É¥A¨ìExcel¤å¥ó</p>
- * <p>Description: ±N¸ê®Æ¾É¥A¨ìExcel¤å¥ó</p>
+ * <p>Title: ç›¢æˆˆî†æ—§î™‡îŸExcelã‚…ãƒ³</p>
+ * <p>Description: ç›¢æˆˆî†æ—§î™‡îŸExcelã‚…ãƒ³</p>
  * <p>Copyright: Copyright (c) 1505</p>
  * <p>Company: YuHeng </p>
- * @author §õ¤•¦T
+ * @author î²î˜ºîšº
  * @version 1.0
  */
 
@@ -57,7 +57,7 @@ public class inforDown extends JFrame {
     this.getContentPane().setLayout();
     this.setResizable(false);
     this.setSize(285,125);
-    this.setTitle("\u804C\u5458«H®§¤I\u8F7D");
+    this.setTitle("\u804C\u5458çºî…¾î—¯\u8F7D");
     Excel = new ImageIcon(db.Main.class.getResource("imag/Excel.gif"));
     Exit = new ImageIcon(db.Main.class.getResource("imag/close.gif"));
     jButton1.setFont(new java.awt.Font("Dialog", 0, 12));
@@ -75,9 +75,9 @@ public class inforDown extends JFrame {
     label1.setDropTarget(null);
     label1.setFont(new java.awt.Font("SimSun", 0, 12));
     label1.setLocale(java.util.Locale.getDefault());
-    label1.setText("Â¾­û½s¸¹");
+    label1.setText("æˆ®î…´çµªè…¹");
     label2.setFont(new java.awt.Font("SimSun", 0, 12));
-    label2.setText("¨ì");
+    label2.setText("îŸ");
     From.setFont(new java.awt.Font("Tahoma", 0, 12));
     From.setForeground(new Color(144, 171, 0));
     From.setText("");
@@ -107,7 +107,7 @@ public class inforDown extends JFrame {
     String tem=null;
 
     if (from.length() == 0&&to.length() == 0) {
-      JOptionPane.showMessageDialog(this, "\u8BF7§‘¤Ö\u8F93£Ÿ£•\u4E2A¦S¬qªº\u804C\u5458\u7F16\u53F7!", "´£¥Ü", 2);
+      JOptionPane.showMessageDialog(this, "\u8BF7î–ã¶\u8F93î—¤î—š\u4E2Aîš¹ç¿î€™\u804C\u5458\u7F16\u53F7!", "çŸ—ãƒœ", 2);
       From.setFocusable(true);
     }else{
 
@@ -189,24 +189,24 @@ System.out.println(sql);
 
 
 // the title Row
-          ws.setRowView(0, 350); //¦æ°ª
+          ws.setRowView(0, 350); //ï¸½è”¼
 
-          labelC = new Label(0, 0, "Â¾­û¤i¸¹", title);
+          labelC = new Label(0, 0, "æˆ®î…´î˜è…¹", title);
           ws.setColumnView(0, 15);
           ws.addCell(labelC);
-          labelC = new Label(1, 0, "Â¾­û©m¥÷", title);
+          labelC = new Label(1, 0, "æˆ®î…´ï¹î½", title);
           ws.setColumnView(1, 15);
           ws.addCell(labelC);
-          labelC = new Label(2, 0, "¯Å¦‘", title);
+          labelC = new Label(2, 0, "î‡ºî›¶", title);
           ws.addCell(labelC);
-          labelC = new Label(3, 0, "¤i¸ê", title);
+          labelC = new Label(3, 0, "î˜æˆˆ", title);
           ws.addCell(labelC);
-          labelC = new Label(4, 0, "£Ÿ¼t®É¶¡", title);
+          labelC = new Label(4, 0, "î—¤ç´…î† ä¸", title);
           ws.setColumnView(4, 15);
           ws.addCell(labelC);
-          labelC = new Label(5, 0, "Äy³e", title);
+          labelC = new Label(5, 0, "è†Ÿç ®", title);
           ws.addCell(labelC);
-          labelC = new Label(6, 0, "Â¾­û¾Ç¾ú", title);
+          labelC = new Label(6, 0, "æˆ®î…´å©èŒ", title);
           ws.setColumnView(6, 15);
           ws.addCell(labelC);
 // the title Row end
@@ -214,7 +214,7 @@ System.out.println(sql);
  //////////// fit the main content////////////
           while (rs.next()) {
 
-            ws.setRowView(temi, 300); //¦æ°ª
+            ws.setRowView(temi, 300); //ï¸½è”¼
 
             labelC = new Label(0, temi, rs.getString("empl_no"), body);
             ws.addCell(labelC);
@@ -242,10 +242,10 @@ System.out.println(sql);
           wwb.close();
           db.freeMemory();
 
-          Object[] options = {"¬O", "¦¹"};
+          Object[] options = {"çŒ", "î…"};
           int n = JOptionPane.showOptionDialog(this,
-                                    "¤å¥ó¤k«O¦T¨ì: " + filepath+". ±z\u73B0¦C­n¥´\u5F00\u5417¡H",
-                                    "«t\u8BE2",
+                                    "ã‚…ãƒ³î˜‘ç‚îšºîŸ: " + filepath+". çœ¤\u73B0îš©ç’¶ã‚´\u5F00\u5417î“",
+                                    "ç¹\u8BE2",
                                     JOptionPane.YES_NO_OPTION,
                                     JOptionPane.QUESTION_MESSAGE,
                                     null,

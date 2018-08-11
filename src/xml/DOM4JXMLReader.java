@@ -29,8 +29,8 @@ public class DOM4JXMLReader {
 				xmlArray[j][0] = foo.elementText("NO");
 				xmlArray[j][1] = foo.elementText("ADDR");
 
-				System.out.print("≥µ≈∆∫≈¬Î:" + foo.elementText("NO"));
-				System.out.println(" ≥µ÷˜µÿ÷∑:" + foo.elementText("ADDR"));
+				System.out.print("ËΩ¶ÁâåÂè∑Á†Å:" + foo.elementText("NO"));
+				System.out.println(" ËΩ¶‰∏ªÂú∞ÂùÄ:" + foo.elementText("ADDR"));
 
 				j = j + 1;
 			}
@@ -38,7 +38,7 @@ public class DOM4JXMLReader {
 			e.printStackTrace();
 		}
 
-		System.out.println("Read xml file cost:£∫"
+		System.out.println("Read xml file cost:Ôºö"
 				+ (System.currentTimeMillis() - lasting) + " milliseconds");
 
 	}

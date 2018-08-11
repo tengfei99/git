@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 
 public class ReduceRt {
-	// ÎÄ¼ş¿½±´
+	// æ–‡ä»¶æ‹·è´
 	public static boolean copy(String file1, String file2) {
 		try // must try and catch,otherwide will compile error
 		{
@@ -30,10 +30,10 @@ public class ReduceRt {
 		}
 	}
 
-	// ¶ÁÈ¡Â·¾¶,copy
+	// è¯»å–è·¯å¾„,copy
 	public static int dealClass(String needfile, String sdir, String odir)
 			throws IOException {
-		int sn = 0; // ³É¹¦¸öÊı
+		int sn = 0; // æˆåŠŸä¸ªæ•°
 
 		File usedclass = new File(needfile);
 		if (usedclass.canRead()) {
@@ -73,7 +73,7 @@ public class ReduceRt {
 			int sn = dealClass(needfile, sdir, odir);
 			System.out.print(sn);
 		} catch (IOException e) {
-			// TODO ×Ô¶¯Éú³É catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆ catch å—
 			e.printStackTrace();
 		}
 

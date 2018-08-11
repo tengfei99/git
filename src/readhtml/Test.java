@@ -10,7 +10,7 @@ public class Test {
 
 	public static void main(String args[]) {
 		String html = "<div align='center'> 04 13 17 32 35 + 03 06</div>";
-		// ¼òµ¥Ê¾Àı£¬Ïàµ±ÓÚString html=getHtml(String urlString);
+		// ç®€å•ç¤ºä¾‹ï¼Œç›¸å½“äºString html=getHtml(String urlString);
 		List<String> resultList = getContext(html);
 		for (Iterator<String> iterator = resultList.iterator(); iterator
 				.hasNext();) {
@@ -20,18 +20,18 @@ public class Test {
 	}
 
 	/**
-	 * ÌáÈ¡"<title>XXXX</title>"ÖĞµÄÎÄ×ÖXXXX
+	 * æå–"<title>XXXX</title>"ä¸­çš„æ–‡å­—XXXX
 	 * 
 	 * @param html
-	 *            Òª½âÎöµÄhtmlÎÄµµÄÚÈİ
-	 * @return ½âÎö½á¹û£¬¿ÉÒÔ¶à´ÎÆ¥Åä£¬Ã¿´ÎÆ¥ÅäµÄ½á¹û°´ÎÄµµÖĞ³öÏÖµÄÏÈºóË³ĞòÌí¼Ó½ø½á¹ûList
+	 *            è¦è§£æçš„htmlæ–‡æ¡£å†…å®¹
+	 * @return è§£æç»“æœï¼Œå¯ä»¥å¤šæ¬¡åŒ¹é…ï¼Œæ¯æ¬¡åŒ¹é…çš„ç»“æœæŒ‰æ–‡æ¡£ä¸­å‡ºç°çš„å…ˆåé¡ºåºæ·»åŠ è¿›ç»“æœList
 	 */
 	public static List<String> getContext(String html) {
 		List<String> resultList = new ArrayList<String>();
-		Pattern p = Pattern.compile("<div align='center'>([^</div>]*)");// Æ¥Åä<title>¿ªÍ·£¬</title>½áÎ²µÄÎÄµµ
-		Matcher m = p.matcher(html);// ¿ªÊ¼±àÒë
+		Pattern p = Pattern.compile("<div align='center'>([^</div>]*)");// åŒ¹é…<title>å¼€å¤´ï¼Œ</title>ç»“å°¾çš„æ–‡æ¡£
+		Matcher m = p.matcher(html);// å¼€å§‹ç¼–è¯‘
 		while (m.find()) {
-			resultList.add(m.group(1));// »ñÈ¡±»Æ¥ÅäµÄ²¿·Ö
+			resultList.add(m.group(1));// è·å–è¢«åŒ¹é…çš„éƒ¨åˆ†
 		}
 		return resultList;
 	}

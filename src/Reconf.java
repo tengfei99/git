@@ -6,7 +6,7 @@ public class Reconf {
 	private static String url = "ffffjdbc:microsoft:sqlserver://javali:1433;DatabaseName=Strutsdb";
 	
 	/**
-	 * static 都会首先执行
+	 * static 閮戒細棣栧厛鎵ц
 	 */
 	static {
 		try {

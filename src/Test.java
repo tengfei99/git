@@ -8,7 +8,7 @@ import java.util.Date;
 public class Test {
 
 	/**
-	 * Ğ´ÈÕÖ¾£¬×ªÈëĞèÒªĞ´µÄÈÕÖ¾ĞÅÏ¢£¬ÈÕÖ¾ÎÄ¼ş±£´æÔÚ c:\log.log
+	 * å†™æ—¥å¿—ï¼Œè½¬å…¥éœ€è¦å†™çš„æ—¥å¿—ä¿¡æ¯ï¼Œæ—¥å¿—æ–‡ä»¶ä¿å­˜åœ¨ c:\log.log
 	 * @param log
 	 */
 	public static void writeLog(String log) {
@@ -19,7 +19,7 @@ public class Test {
 
 		try {
 
-			//true±íÊ¾×·¼Ó£¬false±íÊ¾¸²¸Ç
+			//trueè¡¨ç¤ºè¿½åŠ ï¼Œfalseè¡¨ç¤ºè¦†ç›–
 			FileWriter outfile1 = new FileWriter("c:/log.log", true);
 			BufferedWriter outbuffer1 = new BufferedWriter(outfile1);
 
@@ -35,19 +35,19 @@ public class Test {
 	}
 
 	/**
-	 * ¸ù¾İÒ»¸öÈÕÆÚ£¬·µ»ØÊÇĞÇÆÚ¼¸µÄ×Ö·û´®
+	 * æ ¹æ®ä¸€ä¸ªæ—¥æœŸï¼Œè¿”å›æ˜¯æ˜ŸæœŸå‡ çš„å­—ç¬¦ä¸²
 	 * 
 	 * @param sdate
 	 * @return
 	 */
 	public static String getWeek() {
-		// ÔÙ×ª»»ÎªÊ±¼ä
+		// å†è½¬æ¢ä¸ºæ—¶é—´
 		Date date = new Date();
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		int hour = c.get(Calendar.DAY_OF_WEEK);
-		// hourÖĞ´æµÄ¾ÍÊÇĞÇÆÚ¼¸ÁË£¬Æä·¶Î§ 1~7
-		// 1=ĞÇÆÚÈÕ 7=ĞÇÆÚÁù£¬ÆäËûÀàÍÆ
+		// hourä¸­å­˜çš„å°±æ˜¯æ˜ŸæœŸå‡ äº†ï¼Œå…¶èŒƒå›´ 1~7
+		// 1=æ˜ŸæœŸæ—¥ 7=æ˜ŸæœŸå…­ï¼Œå…¶ä»–ç±»æ¨
 		return String.valueOf(hour);// new
 									// SimpleDateFormat("EEEE").format(c.getTime());
 	}

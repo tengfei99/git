@@ -20,14 +20,14 @@ import javax.mail.internet.MimeMultipart;
 
 /** */
 /**
- * java mail ·¢ËÍ¸´ÔÓÓÊ¼ş,°üÀ¨Á½¸ö¸½¼ş,htmlÏûÏ¢,htmlÖĞÇ¶ÈëÁ½ÕÅÍ¼Æ¬ »¹°üÀ¨·¢ËÍalternativeÓÊ¼şµÄÔ´Âë.
+ * java mail å‘é€å¤æ‚é‚®ä»¶,åŒ…æ‹¬ä¸¤ä¸ªé™„ä»¶,htmlæ¶ˆæ¯,htmlä¸­åµŒå…¥ä¸¤å¼ å›¾ç‰‡ è¿˜åŒ…æ‹¬å‘é€alternativeé‚®ä»¶çš„æºç .
  * 
  * @author zhangle
  * 
  */
 public class SendMixedMail {
-	// ÒÔÏÂÊôĞÔ¸ù¾İ×Ô¼ºÇé¿öÉèÖÃ.
-	// ÒÔÏÂÊôĞÔ¸ù¾İ×Ô¼ºÇé¿öÉèÖÃ.
+	// ä»¥ä¸‹å±æ€§æ ¹æ®è‡ªå·±æƒ…å†µè®¾ç½®.
+	// ä»¥ä¸‹å±æ€§æ ¹æ®è‡ªå·±æƒ…å†µè®¾ç½®.
 	 private static String protocol = "smtp";
 	 private static String from = "tengfei99@163.com";
 	 private static String to = "lishicun@huawei.com";
@@ -42,12 +42,12 @@ public class SendMixedMail {
 		prop.setProperty("mail.transport.protocol", protocol);
 		prop.setProperty("mail.smtp.auth", "true");
 
-		Session session = Session.getInstance(prop, new Authenticator() {// ÓÃ»§Á¬½ÓÈÏÖ¤
+		Session session = Session.getInstance(prop, new Authenticator() {// ç”¨æˆ·è¿æ¥è®¤è¯
 					public PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(username, password);
 					}
 				});
-		session.setDebug(true);// ¿ªÆôµ÷ÊÔ
+		session.setDebug(true);// å¼€å¯è°ƒè¯•
 
 		MimeMessage message = new MimeMessage(session);
 		message.setFrom(new InternetAddress(from));
@@ -55,31 +55,31 @@ public class SendMixedMail {
 				.parse(to));
 		message.setSubject(subject);
 		message.setSentDate(new Date());
-		// message.setText(body);//·¢ËÍ´¿ÎÄ±¾ÏûÏ¢
-		message.setContent(getAlternativeMultipart());//·¢ËÍalternativeÓÊ¼ş
-		//message.setContent(getMultipart());// ·¢ËÍ¸´ÔÓÎÄ±¾ÏûÏ¢
-		message.saveChanges();// ±£´æÏûÏ¢
+		// message.setText(body);//å‘é€çº¯æ–‡æœ¬æ¶ˆæ¯
+		message.setContent(getAlternativeMultipart());//å‘é€alternativeé‚®ä»¶
+		//message.setContent(getMultipart());// å‘é€å¤æ‚æ–‡æœ¬æ¶ˆæ¯
+		message.saveChanges();// ä¿å­˜æ¶ˆæ¯
 
 		Transport trans = session.getTransport();
 		trans.connect(server, username, password);
 		trans.sendMessage(message, message
-				.getRecipients(Message.RecipientType.TO));// ·¢ËÍ
+				.getRecipients(Message.RecipientType.TO));// å‘é€
 		trans.close();
 	}
 
 	/** */
 	/**
-	 * »ñµÃ¸´ÔÓÓÊ¼şMultipart¶ÔÏó
+	 * è·å¾—å¤æ‚é‚®ä»¶Multipartå¯¹è±¡
 	 * 
 	 * @return
 	 * @throws MessagingException
 	 */
 	private static Multipart getMultipart() throws MessagingException {
 
-		Multipart multi = new MimeMultipart("mixed");// »ìºÏMIMEÏûÏ¢
+		Multipart multi = new MimeMultipart("mixed");// æ··åˆMIMEæ¶ˆæ¯
 
 		multi.addBodyPart(createContent());
-		multi.addBodyPart(createAttachment(new File("D:/photo.xls")));// Ç¶Èë¸½¼ş
+		multi.addBodyPart(createAttachment(new File("D:/photo.xls")));// åµŒå…¥é™„ä»¶
 		multi.addBodyPart(createAttachment(new File("D:/wall_3d.jpg")));
 
 		return multi;
@@ -88,17 +88,17 @@ public class SendMixedMail {
 
 	/** */
 	/**
-	 * ´´½¨ÕıÎÄ
+	 * åˆ›å»ºæ­£æ–‡
 	 * 
 	 * @return
 	 * @throws MessagingException
 	 */
 	private static BodyPart createContent() throws MessagingException {
 		BodyPart content = new MimeBodyPart();
-		Multipart relate = new MimeMultipart("related");// ×éºÏMIMEÏûÏ¢
+		Multipart relate = new MimeMultipart("related");// ç»„åˆMIMEæ¶ˆæ¯
 
 		relate.addBodyPart(createHtmlBody());
-		relate.addBodyPart(createImagePart(new File("D:/a4f29fea2efbe1bbc15a76cbad6e1b52984883010d482ac8b4f786a04c647771b1285dca13fe037517dddb54812aa5eb94a6bddc5ce0624b6f085add77f3e42e.jpg"), "img1"));// Ç¶ÈëÍ¼Æ¬
+		relate.addBodyPart(createImagePart(new File("D:/a4f29fea2efbe1bbc15a76cbad6e1b52984883010d482ac8b4f786a04c647771b1285dca13fe037517dddb54812aa5eb94a6bddc5ce0624b6f085add77f3e42e.jpg"), "img1"));// åµŒå…¥å›¾ç‰‡
 		relate.addBodyPart(createImagePart(new File("D:/IMG_3148.JPG"), "img2"));
 
 		content.setContent(relate);
@@ -107,7 +107,7 @@ public class SendMixedMail {
 
 	/** */
 	/**
-	 * ´´½¨Í¼Æ¬
+	 * åˆ›å»ºå›¾ç‰‡
 	 * 
 	 * @param file
 	 * @param name
@@ -128,7 +128,7 @@ public class SendMixedMail {
 
 	/** */
 	/**
-	 * ´´½¨htmlÏûÏ¢
+	 * åˆ›å»ºhtmlæ¶ˆæ¯
 	 * 
 	 * @return
 	 * @throws MessagingException
@@ -141,7 +141,7 @@ public class SendMixedMail {
 
 	/** */
 	/**
-	 * ´´½¨¸½¼ş
+	 * åˆ›å»ºé™„ä»¶
 	 * 
 	 * @param file
 	 * @return
@@ -160,7 +160,7 @@ public class SendMixedMail {
 
 	/** */
 	/**
-	 * »ñÈ¡alternativeÓÊ¼ş
+	 * è·å–alternativeé‚®ä»¶
 	 * 
 	 * @return
 	 * @throws MessagingException
@@ -168,10 +168,10 @@ public class SendMixedMail {
 	private static Multipart getAlternativeMultipart()
 			throws MessagingException {
 
-		Multipart alternative = new MimeMultipart("alternative");// ¶şÑ¡Ò»ÏûÏ¢
+		Multipart alternative = new MimeMultipart("alternative");// äºŒé€‰ä¸€æ¶ˆæ¯
 
 		BodyPart text = new MimeBodyPart();
-		text.setContent("Çëä¯ÀÀHTML", "text/plain;charset=gbk");
+		text.setContent("è¯·æµè§ˆHTML", "text/plain;charset=gbk");
 		alternative.addBodyPart(text);
 
 		BodyPart html = new MimeBodyPart();

@@ -1,8 +1,8 @@
 /*   
- *   µ±Ç°ÎÄ¼ş£ºDesEncrypt.java   
- *   ´´½¨ÈÕÆÚ£º2005-7-29   
- *   °æ   ±¾   ºÅ£º1.0   
- *   ×÷Õß£ºÀîÊÀ´æ  
+ *   å½“å‰æ–‡ä»¶ï¼šDesEncrypt.java   
+ *   åˆ›å»ºæ—¥æœŸï¼š2005-7-29   
+ *   ç‰ˆ   æœ¬   å·ï¼š1.0   
+ *   ä½œè€…ï¼šæä¸–å­˜  
  *     
  */
 
@@ -19,18 +19,18 @@ import sun.misc.BASE64Encoder;
 
 /**
  * 
- * Ê¹ÓÃDES¼ÓÃÜÓë½âÃÜ,¿É¶Ôbyte[],StringÀàĞÍ½øĞĞ¼ÓÃÜÓë½âÃÜ ÃÜÎÄ¿ÉÊ¹ÓÃString,byte[]´æ´¢.
+ * ä½¿ç”¨DESåŠ å¯†ä¸è§£å¯†,å¯å¯¹byte[],Stringç±»å‹è¿›è¡ŒåŠ å¯†ä¸è§£å¯† å¯†æ–‡å¯ä½¿ç”¨String,byte[]å­˜å‚¨.
  * <p>
  * 
- * ·½·¨: void getKey(String strKey) ¸ù¾İstrKeyµÄ×ÖÌõÉú³ÉÒ»¸öÃÜÔ¿Key.
+ * æ–¹æ³•: void getKey(String strKey) æ ¹æ®strKeyçš„å­—æ¡ç”Ÿæˆä¸€ä¸ªå¯†é’¥Key.
  * <p>
  * 
- * String getEncString(String strMing)¶ÔstrMing½øĞĞ¼ÓÃÜ,·µ»ØStringÃÜÎÄ <br>
- * String getDesString(String strMi)¶ÔstrMin½øĞĞ½âÃÜ,·µ»ØStringÃ÷ÎÄ
+ * String getEncString(String strMing)å¯¹strMingè¿›è¡ŒåŠ å¯†,è¿”å›Stringå¯†æ–‡ <br>
+ * String getDesString(String strMi)å¯¹strMinè¿›è¡Œè§£å¯†,è¿”å›Stringæ˜æ–‡
  * <p>
  * 
- * byte[] getEncCode(byte[] byteS) byte[]ĞÍµÄ¼ÓÃÜ <br>
- * byte[] getDesCode(byte[] byteD)byte[]ĞÍµÄ½âÃÜ
+ * byte[] getEncCode(byte[] byteS) byte[]å‹çš„åŠ å¯† <br>
+ * byte[] getDesCode(byte[] byteD)byte[]å‹çš„è§£å¯†
  * <p>
  * 
  */
@@ -39,13 +39,13 @@ public class DesEncrypt {
 	Key key;
 
 	/**
-	 * ¸ù¾İ²ÎÊıÉú³ÉKEY
+	 * æ ¹æ®å‚æ•°ç”ŸæˆKEY
 	 * 
 	 * @param strKey
 	 */
 	public void getKey() {
 		try {
-			String strKey = "cunqing168";//ÃÜÔ¿
+			String strKey = "cunqing168";//å¯†é’¥
 			KeyGenerator _generator = KeyGenerator.getInstance("DES");
 			_generator.init(new SecureRandom(strKey.getBytes()));
 			this.key = _generator.generateKey();
@@ -56,7 +56,7 @@ public class DesEncrypt {
 	}
 
 	/**
-	 * ¼ÓÃÜStringÃ÷ÎÄÊäÈë,StringÃÜÎÄÊä³ö
+	 * åŠ å¯†Stringæ˜æ–‡è¾“å…¥,Stringå¯†æ–‡è¾“å‡º
 	 * 
 	 * @param strMing
 	 * @return
@@ -81,7 +81,7 @@ public class DesEncrypt {
 	}
 
 	/**
-	 * ½âÃÜ ÒÔStringÃÜÎÄÊäÈë,StringÃ÷ÎÄÊä³ö
+	 * è§£å¯† ä»¥Stringå¯†æ–‡è¾“å…¥,Stringæ˜æ–‡è¾“å‡º
 	 * 
 	 * @param strMi
 	 * @return
@@ -106,7 +106,7 @@ public class DesEncrypt {
 	}
 
 	/**
-	 * ¼ÓÃÜÒÔbyte[]Ã÷ÎÄÊäÈë,byte[]ÃÜÎÄÊä³ö
+	 * åŠ å¯†ä»¥byte[]æ˜æ–‡è¾“å…¥,byte[]å¯†æ–‡è¾“å‡º
 	 * 
 	 * @param byteS
 	 * @return
@@ -127,7 +127,7 @@ public class DesEncrypt {
 	}
 
 	/**
-	 * ½âÃÜÒÔbyte[]ÃÜÎÄÊäÈë,ÒÔbyte[]Ã÷ÎÄÊä³ö
+	 * è§£å¯†ä»¥byte[]å¯†æ–‡è¾“å…¥,ä»¥byte[]æ˜æ–‡è¾“å‡º
 	 * 
 	 * @param byteD
 	 * @return
@@ -151,13 +151,13 @@ public class DesEncrypt {
 	public static void main(String[] args) throws Exception {
 
 		System.out.println("hello");
-		DesEncrypt des = new DesEncrypt();// ÊµÀı»¯Ò»¸ö¶ÔÏñ
+		DesEncrypt des = new DesEncrypt();// å®ä¾‹åŒ–ä¸€ä¸ªå¯¹åƒ
 		des.getKey();
 
-		String strEnc = des.getEncString("struts");// ¼ÓÃÜ×Ö·û´®,·µ»ØStringµÄÃÜÎÄ
+		String strEnc = des.getEncString("struts");// åŠ å¯†å­—ç¬¦ä¸²,è¿”å›Stringçš„å¯†æ–‡
 		System.out.println(strEnc);
 
-		String strDes = des.getDesString(strEnc);// °ÑString ÀàĞÍµÄÃÜÎÄ½âÃÜ
+		String strDes = des.getDesString(strEnc);// æŠŠString ç±»å‹çš„å¯†æ–‡è§£å¯†
 		System.out.println(strDes);
 
 	}

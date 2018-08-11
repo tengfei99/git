@@ -5,7 +5,7 @@ public class HTML
 {
  public static String Html2Text(String inputString) 
  {
-        String htmlStr = "<div align=\"center\"> 04 13 17 32 35 + 03 06</div>"; //º¬html±êÇ©µÄ×Ö·û´®
+        String htmlStr = "<div align=\"center\"> 04 13 17 32 35 + 03 06</div>"; //å«htmlæ ‡ç­¾çš„å­—ç¬¦ä¸²
         String textStr ="";
         java.util.regex.Pattern p_script;
         java.util.regex.Matcher m_script;
@@ -16,21 +16,21 @@ public class HTML
 
         try 
         {
-         String regEx_script = "<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?script[\\s]*?>"; //¶¨ÒåscriptµÄÕıÔò±í´ïÊ½{»ò<script[^>]*?>[\\s\\S]*?<\\/script> }
-         String regEx_style = "<[\\s]*?style[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?style[\\s]*?>"; //¶¨ÒåstyleµÄÕıÔò±í´ïÊ½{»ò<style[^>]*?>[\\s\\S]*?<\\/style> }
-         String regEx_html = "<[^>]+>"; //¶¨ÒåHTML±êÇ©µÄÕıÔò±í´ïÊ½
+         String regEx_script = "<[\\s]*?script[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?script[\\s]*?>"; //å®šä¹‰scriptçš„æ­£åˆ™è¡¨è¾¾å¼{æˆ–<script[^>]*?>[\\s\\S]*?<\\/script> }
+         String regEx_style = "<[\\s]*?style[^>]*?>[\\s\\S]*?<[\\s]*?\\/[\\s]*?style[\\s]*?>"; //å®šä¹‰styleçš„æ­£åˆ™è¡¨è¾¾å¼{æˆ–<style[^>]*?>[\\s\\S]*?<\\/style> }
+         String regEx_html = "<[^>]+>"; //å®šä¹‰HTMLæ ‡ç­¾çš„æ­£åˆ™è¡¨è¾¾å¼
 
          p_script = Pattern.compile(regEx_script,Pattern.CASE_INSENSITIVE);
          m_script = p_script.matcher(htmlStr);
-         htmlStr = m_script.replaceAll(""); //¹ıÂËscript±êÇ©
+         htmlStr = m_script.replaceAll(""); //è¿‡æ»¤scriptæ ‡ç­¾
 
          p_style = Pattern.compile(regEx_style,Pattern.CASE_INSENSITIVE);
          m_style = p_style.matcher(htmlStr);
-         htmlStr = m_style.replaceAll(""); //¹ıÂËstyle±êÇ©
+         htmlStr = m_style.replaceAll(""); //è¿‡æ»¤styleæ ‡ç­¾
 
          p_html = Pattern.compile(regEx_html,Pattern.CASE_INSENSITIVE);
          m_html = p_html.matcher(htmlStr);
-         htmlStr = m_html.replaceAll(""); //¹ıÂËhtml±êÇ©
+         htmlStr = m_html.replaceAll(""); //è¿‡æ»¤htmlæ ‡ç­¾
 
          textStr = htmlStr;
         }
@@ -38,7 +38,7 @@ public class HTML
         {
          System.err.println("Html2Text: " + e.getMessage());
         }
-        return textStr;//·µ»ØÎÄ±¾×Ö·û´®
+        return textStr;//è¿”å›æ–‡æœ¬å­—ç¬¦ä¸²
        }   
  
  public static void main(String args[]) {

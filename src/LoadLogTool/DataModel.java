@@ -1,23 +1,23 @@
 package LoadLogTool;
 
 /**
- * ¹¦ÄÜ£ºÊı¾İÄ£ĞÍ£¬Í¨¹ıset,get´æÈ¡Êı¾İ£¬ËùÓĞÊôĞÔÔÚ´Ë¶¨Òå¹ÜÀí
+ * åŠŸèƒ½ï¼šæ•°æ®æ¨¡å‹ï¼Œé€šè¿‡set,getå­˜å–æ•°æ®ï¼Œæ‰€æœ‰å±æ€§åœ¨æ­¤å®šä¹‰ç®¡ç†
  * 
  * @author lishicun l00101203
  * 
  */
 public class DataModel {
 
-	// Æ½Ì¨µÄIPµØÖ·
+	// å¹³å°çš„IPåœ°å€
 	private String IP;
 
-	// µÇÂ¼Æ½Ì¨µÄÓÃ»§Ãû
+	// ç™»å½•å¹³å°çš„ç”¨æˆ·å
 	private String user;
 
-	// µÇÂ¼Æ½Ì¨µÄÃÜÂë
+	// ç™»å½•å¹³å°çš„å¯†ç 
 	private String password;
 
-	// ÈÕÖ¾ÔÚÆ½Ì¨ÖĞËùÔÚµÄÂ·¾¶
+	// æ—¥å¿—åœ¨å¹³å°ä¸­æ‰€åœ¨çš„è·¯å¾„
 	private String unixpath;
 
 	private String localpath;
@@ -33,7 +33,7 @@ public class DataModel {
 	private String ftpmode;
 
 	/**
-	 * »ñÈ¡IPµØÖ·
+	 * è·å–IPåœ°å€
 	 * 
 	 * @return
 	 */
@@ -42,7 +42,7 @@ public class DataModel {
 	}
 
 	/**
-	 * ÉèÖÃIPµØÖ·
+	 * è®¾ç½®IPåœ°å€
 	 * 
 	 * @param IP
 	 */

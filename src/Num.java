@@ -3,7 +3,7 @@ import java.util.Date;
 
  /* 
   * 
-  * Çó1µ½300ÖĞÊı×Ö1³öÏÖµÄ´ÎÊı. 
+  * æ±‚1åˆ°300ä¸­æ•°å­—1å‡ºç°çš„æ¬¡æ•°. 
   * 
   */ 
 
@@ -34,7 +34,7 @@ public class Num{
         long tf2 = System.currentTimeMillis() - tf;
         
 		System.out.println(all);
-        System.out.println("ÓÃÊ±: "+tf2+" ºÁÃë.");
+        System.out.println("ç”¨æ—¶: "+tf2+" æ¯«ç§’.");
         
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

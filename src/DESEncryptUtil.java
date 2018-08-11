@@ -13,21 +13,21 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 
 /**
- * ¸ÃÀàÊÇ¼ÓÃÜ´¦ÀíÀà.Ö÷ÒªÓÃÀ´¶ÔÊı¾İ½øĞĞ¼ÓÃÜ,½âÃÜ²Ù×÷.
+ * è¯¥ç±»æ˜¯åŠ å¯†å¤„ç†ç±».ä¸»è¦ç”¨æ¥å¯¹æ•°æ®è¿›è¡ŒåŠ å¯†,è§£å¯†æ“ä½œ.
  */
 public class DESEncryptUtil {
 
 	String FilePath = null;
 
 	/**
-	 * »ñµÃ¼Ó½âÃÜµÄÃÜÔ¿
+	 * è·å¾—åŠ è§£å¯†çš„å¯†é’¥
 	 * 
-	 * @return Key ·µ»Ø¶Ô³ÆÃÜÔ¿
+	 * @return Key è¿”å›å¯¹ç§°å¯†é’¥
 	 * @throws java.security.NoSuchAlgorithmException
-	 * @see util.EncryptUtil ÆäÖĞ°üÀ¨¼ÓÃÜºÍ½âÃÜµÄ·½·¨
+	 * @see util.EncryptUtil å…¶ä¸­åŒ…æ‹¬åŠ å¯†å’Œè§£å¯†çš„æ–¹æ³•
 	 */
 	public static Key getKey(String strKey) throws NoSuchAlgorithmException {
-		// String strKey = "cunqing168";// ÃÜÔ¿
+		// String strKey = "cunqing168";// å¯†é’¥
 		Security.insertProviderAt(new com.sun.crypto.provider.SunJCE(), 1);
 		KeyGenerator generator = KeyGenerator.getInstance("DES");
 		generator.init(new SecureRandom(strKey.getBytes()));
@@ -36,13 +36,13 @@ public class DESEncryptUtil {
 	}
 
 	/**
-	 * ½«Ö¸¶¨µÄÊı¾İ¸ù¾İÌá¹©µÄÃÜÔ¿½øĞĞ¼ÓÃÜ
+	 * å°†æŒ‡å®šçš„æ•°æ®æ ¹æ®æä¾›çš„å¯†é’¥è¿›è¡ŒåŠ å¯†
 	 * 
 	 * @param key
-	 *            ÃÜÔ¿
+	 *            å¯†é’¥
 	 * @param data
-	 *            ĞèÒª¼ÓÃÜµÄÊı¾İ
-	 * @return byte[] ¼ÓÃÜºóµÄÊı¾İ
+	 *            éœ€è¦åŠ å¯†çš„æ•°æ®
+	 * @return byte[] åŠ å¯†åçš„æ•°æ®
 	 * @throws util.Exception
 	 */
 	public static byte[] doEncrypt(Key key, byte[] data) throws Exception {
@@ -59,18 +59,18 @@ public class DESEncryptUtil {
 			return raw;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new Exception("½«Êı¾İ¼ÓÃÜÂë·¢Éú´íÎó:" + e.getMessage());
+			throw new Exception("å°†æ•°æ®åŠ å¯†ç å‘ç”Ÿé”™è¯¯:" + e.getMessage());
 		}
 	}
 
 	/**
-	 * ½«¸ø¶¨µÄÒÑ¼ÓÃÜµÄÊı¾İÍ¨¹ıÖ¸¶¨µÄÃÜÔ¿½øĞĞ½âÃÜ
+	 * å°†ç»™å®šçš„å·²åŠ å¯†çš„æ•°æ®é€šè¿‡æŒ‡å®šçš„å¯†é’¥è¿›è¡Œè§£å¯†
 	 * 
 	 * @param key
-	 *            ÃÜÔ¿
+	 *            å¯†é’¥
 	 * @param raw
-	 *            ´ı½âÃÜµÄÊı¾İ
-	 * @return byte[] ½âÃÜºóµÄÊı¾İ
+	 *            å¾…è§£å¯†çš„æ•°æ®
+	 * @return byte[] è§£å¯†åçš„æ•°æ®
 	 * @throws util.Exception
 	 */
 	public static byte[] doDecrypt(Key key, byte[] raw) throws Exception {
@@ -87,20 +87,20 @@ public class DESEncryptUtil {
 			return data;
 		} catch (Exception e) {
 			// e.printStackTrace();
-			throw new Exception("½âÃÜ·¢Éú´íÎó:[" + e.getMessage() + "]");
+			throw new Exception("è§£å¯†å‘ç”Ÿé”™è¯¯:[" + e.getMessage() + "]");
 		}
 	}
 
 	/**
-	 * µÃµ½Ò»¸öÃÜÔ¿µÄÃÜÂë
+	 * å¾—åˆ°ä¸€ä¸ªå¯†é’¥çš„å¯†ç 
 	 * 
 	 * @param key
-	 *            ÃÜÔ¿
+	 *            å¯†é’¥
 	 * @param cipherMode
-	 *            ÃÜÂëµÄÀàĞÍ
+	 *            å¯†ç çš„ç±»å‹
 	 * @return Cipher
 	 * @throws util.Exception
-	 *             µ±¼ÓÃÜ³öÏÖÒì³£Çé¿öÊ±,²úÉúÒì³£ĞÅÏ¢
+	 *             å½“åŠ å¯†å‡ºç°å¼‚å¸¸æƒ…å†µæ—¶,äº§ç”Ÿå¼‚å¸¸ä¿¡æ¯
 	 */
 	public static Cipher getCipher(Key key, int cipherMode) throws Exception {
 		try {
@@ -109,7 +109,7 @@ public class DESEncryptUtil {
 			return cipher;
 		} catch (Exception e) {
 			// e.printStackTrace();
-			throw new Exception("²úÉúÃÜÔ¿µÄÃÜÂë´íÎó:" + e.getMessage());
+			throw new Exception("äº§ç”Ÿå¯†é’¥çš„å¯†ç é”™è¯¯:" + e.getMessage());
 		}
 	}
 
@@ -118,13 +118,13 @@ public class DESEncryptUtil {
 		if (args.length != 3) {
 			System.out
 					.println("====================================================");
-			System.out.println("ÓÃ·¨£ºjava DesFile <enc|des> <key> <filepath>");
+			System.out.println("ç”¨æ³•ï¼šjava DesFile <enc|des> <key> <filepath>");
 			System.out.println("");
-			System.out.println("ËµÃ÷£ºenc ±í¼ÓÃÜ£¬des±í½âÃÜ.");
+			System.out.println("è¯´æ˜ï¼šenc è¡¨åŠ å¯†ï¼Œdesè¡¨è§£å¯†.");
 			System.out.println("");
-			System.out.println("      key Îª¼Ó½âÃÜµÄÃÜÔ¿.");
+			System.out.println("      key ä¸ºåŠ è§£å¯†çš„å¯†é’¥.");
 			System.out.println("");
-			System.out.println("      filepath ±íÒª¼ÓÃÜ»ò½âÃÜµÄÎÄ¼şÂ·¾¶.");
+			System.out.println("      filepath è¡¨è¦åŠ å¯†æˆ–è§£å¯†çš„æ–‡ä»¶è·¯å¾„.");
 			System.out
 					.println("====================================================");
 			return;
@@ -139,7 +139,7 @@ public class DESEncryptUtil {
 		} catch (FileNotFoundException ffe) {
 			System.out
 					.println("====================================================");
-			System.out.println("ÄúÖ¸¶¨µÄÎÄ¼ş²»´æÔÚ£¬ÇëÖØĞÂÊäÈë£¡");
+			System.out.println("æ‚¨æŒ‡å®šçš„æ–‡ä»¶ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
 			System.out
 					.println("====================================================");
 			return;
@@ -155,9 +155,9 @@ public class DESEncryptUtil {
 		in.close();
 		byte[] orgData = bout.toByteArray();
 
-		Key key = DESEncryptUtil.getKey(args[1]);// Éú³ÉÃÜÔ¿
+		Key key = DESEncryptUtil.getKey(args[1]);// ç”Ÿæˆå¯†é’¥
 
-		if ("enc".equals(args[0])) {// ¼ÓÃÜÎÄ¼ş
+		if ("enc".equals(args[0])) {// åŠ å¯†æ–‡ä»¶
 			byte[] raw = DESEncryptUtil.doEncrypt(key, orgData);
 			file = new File(args[2]);
 			OutputStream out = new FileOutputStream(file);
@@ -166,10 +166,10 @@ public class DESEncryptUtil {
 			out.close();
 			System.out
 					.println("====================================================");
-			System.out.println("ĞÅÏ¢:½«ÎÄ¼ş" + args[2] + "¼ÓÃÜÍê³É!");
+			System.out.println("ä¿¡æ¯:å°†æ–‡ä»¶" + args[2] + "åŠ å¯†å®Œæˆ!");
 			System.out
 					.println("====================================================");
-		} else if ("des".equals(args[0])) {// ½âÃÜÎÄ¼ş
+		} else if ("des".equals(args[0])) {// è§£å¯†æ–‡ä»¶
 			byte[] data = DESEncryptUtil.doDecrypt(key, orgData);
 			file = new File(args[2]);
 			OutputStream out = new FileOutputStream(file);
@@ -178,15 +178,15 @@ public class DESEncryptUtil {
 			out.close();
 			System.out
 					.println("====================================================");
-			System.out.println("ĞÅÏ¢:½«ÎÄ¼ş" + args[2] + "½âÃÜÍê³É!");
+			System.out.println("ä¿¡æ¯:å°†æ–‡ä»¶" + args[2] + "è§£å¯†å®Œæˆ!");
 			System.out
 					.println("====================================================");
-		} else { // ÆäËüÊäÈë,ÔòÊä³öÌáÊ¾ĞÅÏ¢
+		} else { // å…¶å®ƒè¾“å…¥,åˆ™è¾“å‡ºæç¤ºä¿¡æ¯
 			System.out
 					.println("====================================================");
-			System.out.println("ÄúÊäÈëµÄµÚÒ»¸ö²ÎÊı²»ÕıÈ·£¬µÚÒ»¸ö²ÎÊıÖ»ÄÜÎªenc»òdes£¡");
+			System.out.println("æ‚¨è¾“å…¥çš„ç¬¬ä¸€ä¸ªå‚æ•°ä¸æ­£ç¡®ï¼Œç¬¬ä¸€ä¸ªå‚æ•°åªèƒ½ä¸ºencæˆ–desï¼");
 			System.out.println("");
-			System.out.println("enc±í¼ÓÃÜ£¬des±í½âÃÜ£¬ÇëÖØĞÂÊäÈë£¡");
+			System.out.println("encè¡¨åŠ å¯†ï¼Œdesè¡¨è§£å¯†ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
 			System.out
 					.println("====================================================");
 			return;

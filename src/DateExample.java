@@ -4,11 +4,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateExample {
-	// javaÊ±¼ä¸ñÊ½´óÈ«Ê±¼ä
-	// ×÷Õß£º´ôÈı/zbcdj2008
+	// javaæ—¶é—´æ ¼å¼å¤§å…¨æ—¶é—´
+	// ä½œè€…ï¼šå‘†ä¸‰/zbcdj2008
 
 	/**
-	 * »ñÈ¡Ò»¸öÔÂµÄ×îºóÒ»Ìì
+	 * è·å–ä¸€ä¸ªæœˆçš„æœ€åä¸€å¤©
 	 * 
 	 * @param dat
 	 * @return
@@ -33,7 +33,7 @@ public class DateExample {
 	}
 
 	/**
-	 * ÅĞ¶Ï¶ş¸öÊ±¼äÊÇ·ñÔÚÍ¬Ò»¸öÖÜ
+	 * åˆ¤æ–­äºŒä¸ªæ—¶é—´æ˜¯å¦åœ¨åŒä¸€ä¸ªå‘¨
 	 * 
 	 * @param date1
 	 * @param date2
@@ -50,7 +50,7 @@ public class DateExample {
 					.get(Calendar.WEEK_OF_YEAR))
 				return true;
 		} else if (1 == subYear && 11 == cal2.get(Calendar.MONTH)) {
-			// Èç¹û12ÔÂµÄ×îºóÒ»ÖÜºá¿çÀ´ÄêµÚÒ»ÖÜµÄ»°Ôò×îºóÒ»ÖÜ¼´Ëã×öÀ´ÄêµÄµÚÒ»ÖÜ
+			// å¦‚æœ12æœˆçš„æœ€åä¸€å‘¨æ¨ªè·¨æ¥å¹´ç¬¬ä¸€å‘¨çš„è¯åˆ™æœ€åä¸€å‘¨å³ç®—åšæ¥å¹´çš„ç¬¬ä¸€å‘¨
 			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2
 					.get(Calendar.WEEK_OF_YEAR))
 				return true;
@@ -63,7 +63,7 @@ public class DateExample {
 	}
 
 	/**
-	 * ²úÉúÖÜĞòÁĞ,¼´µÃµ½µ±Ç°Ê±¼äËùÔÚµÄÄê¶ÈÊÇµÚ¼¸ÖÜ
+	 * äº§ç”Ÿå‘¨åºåˆ—,å³å¾—åˆ°å½“å‰æ—¶é—´æ‰€åœ¨çš„å¹´åº¦æ˜¯ç¬¬å‡ å‘¨
 	 * 
 	 * @return
 	 */
@@ -77,48 +77,48 @@ public class DateExample {
 	}
 
 	/**
-	 * »ñµÃÒ»¸öÈÕÆÚËùÔÚµÄÖÜµÄĞÇÆÚ¼¸µÄÈÕÆÚ£¬ÈçÒªÕÒ³ö2002Äê2ÔÂ3ÈÕËùÔÚÖÜµÄĞÇÆÚÒ»ÊÇ¼¸ºÅ
+	 * è·å¾—ä¸€ä¸ªæ—¥æœŸæ‰€åœ¨çš„å‘¨çš„æ˜ŸæœŸå‡ çš„æ—¥æœŸï¼Œå¦‚è¦æ‰¾å‡º2002å¹´2æœˆ3æ—¥æ‰€åœ¨å‘¨çš„æ˜ŸæœŸä¸€æ˜¯å‡ å·
 	 * 
 	 * @param sdate
 	 * @param num
 	 * @return
 	 */
 	public static String getWeek(String sdate, String num) {
-		// ÔÙ×ª»»ÎªÊ±¼ä
+		// å†è½¬æ¢ä¸ºæ—¶é—´
 		Date dd = DateExample.strToDate(sdate);
 		Calendar c = Calendar.getInstance();
 		c.setTime(dd);
-		if (num.equals("1")) // ·µ»ØĞÇÆÚÒ»ËùÔÚµÄÈÕÆÚ
+		if (num.equals("1")) // è¿”å›æ˜ŸæœŸä¸€æ‰€åœ¨çš„æ—¥æœŸ
 			c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-		else if (num.equals("2")) // ·µ»ØĞÇÆÚ¶şËùÔÚµÄÈÕÆÚ
+		else if (num.equals("2")) // è¿”å›æ˜ŸæœŸäºŒæ‰€åœ¨çš„æ—¥æœŸ
 			c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-		else if (num.equals("3")) // ·µ»ØĞÇÆÚÈıËùÔÚµÄÈÕÆÚ
+		else if (num.equals("3")) // è¿”å›æ˜ŸæœŸä¸‰æ‰€åœ¨çš„æ—¥æœŸ
 			c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
-		else if (num.equals("4")) // ·µ»ØĞÇÆÚËÄËùÔÚµÄÈÕÆÚ
+		else if (num.equals("4")) // è¿”å›æ˜ŸæœŸå››æ‰€åœ¨çš„æ—¥æœŸ
 			c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
-		else if (num.equals("5")) // ·µ»ØĞÇÆÚÎåËùÔÚµÄÈÕÆÚ
+		else if (num.equals("5")) // è¿”å›æ˜ŸæœŸäº”æ‰€åœ¨çš„æ—¥æœŸ
 			c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
-		else if (num.equals("6")) // ·µ»ØĞÇÆÚÁùËùÔÚµÄÈÕÆÚ
+		else if (num.equals("6")) // è¿”å›æ˜ŸæœŸå…­æ‰€åœ¨çš„æ—¥æœŸ
 			c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
-		else if (num.equals("0")) // ·µ»ØĞÇÆÚÈÕËùÔÚµÄÈÕÆÚ
+		else if (num.equals("0")) // è¿”å›æ˜ŸæœŸæ—¥æ‰€åœ¨çš„æ—¥æœŸ
 			c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 		return new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
 	}
 
 	/**
-	 * ¸ù¾İÒ»¸öÈÕÆÚ£¬·µ»ØÊÇĞÇÆÚ¼¸µÄ×Ö·û´®
+	 * æ ¹æ®ä¸€ä¸ªæ—¥æœŸï¼Œè¿”å›æ˜¯æ˜ŸæœŸå‡ çš„å­—ç¬¦ä¸²
 	 * 
 	 * @param sdate
 	 * @return
 	 */
 	public static String getWeek(String sdate) {
-		// ÔÙ×ª»»ÎªÊ±¼ä
+		// å†è½¬æ¢ä¸ºæ—¶é—´
 		Date date = DateExample.strToDate(sdate);
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		// int hour=c.get(Calendar.DAY_OF_WEEK);
-		// hourÖĞ´æµÄ¾ÍÊÇĞÇÆÚ¼¸ÁË£¬Æä·¶Î§ 1~7
-		// 1=ĞÇÆÚÈÕ 7=ĞÇÆÚÁù£¬ÆäËûÀàÍÆ
+		// hourä¸­å­˜çš„å°±æ˜¯æ˜ŸæœŸå‡ äº†ï¼Œå…¶èŒƒå›´ 1~7
+		// 1=æ˜ŸæœŸæ—¥ 7=æ˜ŸæœŸå…­ï¼Œå…¶ä»–ç±»æ¨
 		return new SimpleDateFormat("EEEE").format(c.getTime());
 	}
 
@@ -126,25 +126,25 @@ public class DateExample {
 		String str = "";
 		str = DateExample.getWeek(sdate);
 		if ("1".equals(str)) {
-			str = "ĞÇÆÚÈÕ";
+			str = "æ˜ŸæœŸæ—¥";
 		} else if ("2".equals(str)) {
-			str = "ĞÇÆÚÒ»";
+			str = "æ˜ŸæœŸä¸€";
 		} else if ("3".equals(str)) {
-			str = "ĞÇÆÚ¶ş";
+			str = "æ˜ŸæœŸäºŒ";
 		} else if ("4".equals(str)) {
-			str = "ĞÇÆÚÈı";
+			str = "æ˜ŸæœŸä¸‰";
 		} else if ("5".equals(str)) {
-			str = "ĞÇÆÚËÄ";
+			str = "æ˜ŸæœŸå››";
 		} else if ("6".equals(str)) {
-			str = "ĞÇÆÚÎå";
+			str = "æ˜ŸæœŸäº”";
 		} else if ("7".equals(str)) {
-			str = "ĞÇÆÚÁù";
+			str = "æ˜ŸæœŸå…­";
 		}
 		return str;
 	}
 
 	/**
-	 * Á½¸öÊ±¼äÖ®¼äµÄÌìÊı
+	 * ä¸¤ä¸ªæ—¶é—´ä¹‹é—´çš„å¤©æ•°
 	 * 
 	 * @param date1
 	 * @param date2
@@ -155,7 +155,7 @@ public class DateExample {
 			return 0;
 		if (date2 == null || date2.equals(""))
 			return 0;
-		// ×ª»»Îª±ê×¼Ê±¼ä
+		// è½¬æ¢ä¸ºæ ‡å‡†æ—¶é—´
 		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date date = null;
 		java.util.Date mydate = null;
@@ -169,17 +169,17 @@ public class DateExample {
 	}
 
 	/**
-	 * ĞÎ³ÉÈçÏÂµÄÈÕÀú £¬ ¸ù¾İ´«ÈëµÄÒ»¸öÊ±¼ä·µ»ØÒ»¸ö½á¹¹ ĞÇÆÚÈÕ ĞÇÆÚÒ» ĞÇÆÚ¶ş ĞÇÆÚÈı ĞÇÆÚËÄ ĞÇÆÚÎå ĞÇÆÚÁù ÏÂÃæÊÇµ±ÔÂµÄ¸÷¸öÊ±¼ä
-	 * ´Ëº¯Êı·µ»Ø¸ÃÈÕÀúµÚÒ»ĞĞĞÇÆÚÈÕËùÔÚµÄÈÕÆÚ
+	 * å½¢æˆå¦‚ä¸‹çš„æ—¥å† ï¼Œ æ ¹æ®ä¼ å…¥çš„ä¸€ä¸ªæ—¶é—´è¿”å›ä¸€ä¸ªç»“æ„ æ˜ŸæœŸæ—¥ æ˜ŸæœŸä¸€ æ˜ŸæœŸäºŒ æ˜ŸæœŸä¸‰ æ˜ŸæœŸå›› æ˜ŸæœŸäº” æ˜ŸæœŸå…­ ä¸‹é¢æ˜¯å½“æœˆçš„å„ä¸ªæ—¶é—´
+	 * æ­¤å‡½æ•°è¿”å›è¯¥æ—¥å†ç¬¬ä¸€è¡Œæ˜ŸæœŸæ—¥æ‰€åœ¨çš„æ—¥æœŸ
 	 * 
 	 * @param sdate
 	 * @return
 	 */
 	public static String getNowMonth(String sdate) {
-		// È¡¸ÃÊ±¼äËùÔÚÔÂµÄÒ»ºÅ
+		// å–è¯¥æ—¶é—´æ‰€åœ¨æœˆçš„ä¸€å·
 		sdate = sdate.substring(0, 8) + "01";
 
-		// µÃµ½Õâ¸öÔÂµÄ1ºÅÊÇĞÇÆÚ¼¸
+		// å¾—åˆ°è¿™ä¸ªæœˆçš„1å·æ˜¯æ˜ŸæœŸå‡ 
 		Date date = DateExample.strToDate(sdate);
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
@@ -189,10 +189,10 @@ public class DateExample {
 	}
 
 	/**
-	 * È¡µÃÊı¾İ¿âÖ÷¼ü Éú³É¸ñÊ½Îªyyyymmddhhmmss+kÎ»Ëæ»úÊı
+	 * å–å¾—æ•°æ®åº“ä¸»é”® ç”Ÿæˆæ ¼å¼ä¸ºyyyymmddhhmmss+kä½éšæœºæ•°
 	 * 
 	 * @param k
-	 *            ±íÊ¾ÊÇÈ¡¼¸Î»Ëæ»úÊı£¬¿ÉÒÔ×Ô¼º¶¨
+	 *            è¡¨ç¤ºæ˜¯å–å‡ ä½éšæœºæ•°ï¼Œå¯ä»¥è‡ªå·±å®š
 	 */
 
 	public static String getNo(int k) {
@@ -201,7 +201,7 @@ public class DateExample {
 	}
 
 	/**
-	 * ·µ»ØÒ»¸öËæ»úÊı
+	 * è¿”å›ä¸€ä¸ªéšæœºæ•°
 	 * 
 	 * @param i
 	 * @return
@@ -242,25 +242,25 @@ public class DateExample {
 	}
 
 	/***************************************************************************
-	 * //nd=1±íÊ¾·µ»ØµÄÖµÖĞ°üº¬Äê¶È //yf=1±íÊ¾·µ»ØµÄÖµÖĞ°üº¬ÔÂ·İ //rq=1±íÊ¾·µ»ØµÄÖµÖĞ°üº¬ÈÕÆÚ //format±íÊ¾·µ»ØµÄ¸ñÊ½ 1
-	 * ÒÔÄêÔÂÈÕÖĞÎÄ·µ»Ø 2 ÒÔºáÏß-·µ»Ø // 3 ÒÔĞ±Ïß/·µ»Ø 4 ÒÔËõĞ´²»´øÆäËü·ûºÅĞÎÊ½·µ»Ø // 5 ÒÔµãºÅ.·µ»Ø
+	 * //nd=1è¡¨ç¤ºè¿”å›çš„å€¼ä¸­åŒ…å«å¹´åº¦ //yf=1è¡¨ç¤ºè¿”å›çš„å€¼ä¸­åŒ…å«æœˆä»½ //rq=1è¡¨ç¤ºè¿”å›çš„å€¼ä¸­åŒ…å«æ—¥æœŸ //formatè¡¨ç¤ºè¿”å›çš„æ ¼å¼ 1
+	 * ä»¥å¹´æœˆæ—¥ä¸­æ–‡è¿”å› 2 ä»¥æ¨ªçº¿-è¿”å› // 3 ä»¥æ–œçº¿/è¿”å› 4 ä»¥ç¼©å†™ä¸å¸¦å…¶å®ƒç¬¦å·å½¢å¼è¿”å› // 5 ä»¥ç‚¹å·.è¿”å›
 	 **************************************************************************/
 	public static String getStringDateMonth(String sdate, String nd, String yf,
 			String rq, String format) {
 		Date currentTime = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		String dateString = formatter.format(currentTime);
-		String s_nd = dateString.substring(0, 4); // Äê·İ
-		String s_yf = dateString.substring(5, 7); // ÔÂ·İ
-		String s_rq = dateString.substring(8, 10); // ÈÕÆÚ
+		String s_nd = dateString.substring(0, 4); // å¹´ä»½
+		String s_yf = dateString.substring(5, 7); // æœˆä»½
+		String s_rq = dateString.substring(8, 10); // æ—¥æœŸ
 		String sreturn = "";
 		roc.util.MyChar mc = new roc.util.MyChar();
-		if (sdate == null || sdate.equals("") || !mc.Isdate(sdate)) { // ´¦Àí¿ÕÖµÇé¿ö
+		if (sdate == null || sdate.equals("") || !mc.Isdate(sdate)) { // å¤„ç†ç©ºå€¼æƒ…å†µ
 			if (nd.equals("1")) {
 				sreturn = s_nd;
-				// ´¦Àí¼ä¸ô·û
+				// å¤„ç†é—´éš”ç¬¦
 				if (format.equals("1"))
-					sreturn = sreturn + "Äê";
+					sreturn = sreturn + "å¹´";
 				else if (format.equals("2"))
 					sreturn = sreturn + "-";
 				else if (format.equals("3"))
@@ -268,11 +268,11 @@ public class DateExample {
 				else if (format.equals("5"))
 					sreturn = sreturn + ".";
 			}
-			// ´¦ÀíÔÂ·İ
+			// å¤„ç†æœˆä»½
 			if (yf.equals("1")) {
 				sreturn = sreturn + s_yf;
 				if (format.equals("1"))
-					sreturn = sreturn + "ÔÂ";
+					sreturn = sreturn + "æœˆ";
 				else if (format.equals("2"))
 					sreturn = sreturn + "-";
 				else if (format.equals("3"))
@@ -280,23 +280,23 @@ public class DateExample {
 				else if (format.equals("5"))
 					sreturn = sreturn + ".";
 			}
-			// ´¦ÀíÈÕÆÚ
+			// å¤„ç†æ—¥æœŸ
 			if (rq.equals("1")) {
 				sreturn = sreturn + s_rq;
 				if (format.equals("1"))
-					sreturn = sreturn + "ÈÕ";
+					sreturn = sreturn + "æ—¥";
 			}
 		} else {
-			// ²»ÊÇ¿ÕÖµ£¬Ò²ÊÇÒ»¸öºÏ·¨µÄÈÕÆÚÖµ£¬ÔòÏÈ½«Æä×ª»»Îª±ê×¼µÄÊ±¼ä¸ñÊ½
+			// ä¸æ˜¯ç©ºå€¼ï¼Œä¹Ÿæ˜¯ä¸€ä¸ªåˆæ³•çš„æ—¥æœŸå€¼ï¼Œåˆ™å…ˆå°†å…¶è½¬æ¢ä¸ºæ ‡å‡†çš„æ—¶é—´æ ¼å¼
 			sdate = roc.util.RocDate.getOKDate(sdate);
-			s_nd = sdate.substring(0, 4); // Äê·İ
-			s_yf = sdate.substring(5, 7); // ÔÂ·İ
-			s_rq = sdate.substring(8, 10); // ÈÕÆÚ
+			s_nd = sdate.substring(0, 4); // å¹´ä»½
+			s_yf = sdate.substring(5, 7); // æœˆä»½
+			s_rq = sdate.substring(8, 10); // æ—¥æœŸ
 			if (nd.equals("1")) {
 				sreturn = s_nd;
-				// ´¦Àí¼ä¸ô·û
+				// å¤„ç†é—´éš”ç¬¦
 				if (format.equals("1"))
-					sreturn = sreturn + "Äê";
+					sreturn = sreturn + "å¹´";
 				else if (format.equals("2"))
 					sreturn = sreturn + "-";
 				else if (format.equals("3"))
@@ -304,11 +304,11 @@ public class DateExample {
 				else if (format.equals("5"))
 					sreturn = sreturn + ".";
 			}
-			// ´¦ÀíÔÂ·İ
+			// å¤„ç†æœˆä»½
 			if (yf.equals("1")) {
 				sreturn = sreturn + s_yf;
 				if (format.equals("1"))
-					sreturn = sreturn + "ÔÂ";
+					sreturn = sreturn + "æœˆ";
 				else if (format.equals("2"))
 					sreturn = sreturn + "-";
 				else if (format.equals("3"))
@@ -316,20 +316,20 @@ public class DateExample {
 				else if (format.equals("5"))
 					sreturn = sreturn + ".";
 			}
-			// ´¦ÀíÈÕÆÚ
+			// å¤„ç†æ—¥æœŸ
 			if (rq.equals("1")) {
 				sreturn = sreturn + s_rq;
 				if (format.equals("1"))
-					sreturn = sreturn + "ÈÕ";
+					sreturn = sreturn + "æ—¥";
 			}
 		}
 		return sreturn;
 	}
 
 	/**
-	 * »ñÈ¡ÏÖÔÚÊ±¼ä
+	 * è·å–ç°åœ¨æ—¶é—´
 	 * 
-	 * @return ·µ»ØÊ±¼äÀàĞÍ yyyy-MM-dd HH:mm:ss
+	 * @return è¿”å›æ—¶é—´ç±»å‹ yyyy-MM-dd HH:mm:ss
 	 */
 	public static Date getNowDate() {
 		Date currentTime = new Date();
@@ -341,9 +341,9 @@ public class DateExample {
 	}
 
 	/**
-	 * »ñÈ¡ÏÖÔÚÊ±¼ä
+	 * è·å–ç°åœ¨æ—¶é—´
 	 * 
-	 * @return·µ»Ø¶ÌÊ±¼ä¸ñÊ½ yyyy-MM-dd
+	 * @returnè¿”å›çŸ­æ—¶é—´æ ¼å¼ yyyy-MM-dd
 	 */
 	public static Date getNowDateShort() {
 		Date currentTime = new Date();
@@ -355,9 +355,9 @@ public class DateExample {
 	}
 
 	/**
-	 * »ñÈ¡ÏÖÔÚÊ±¼ä
+	 * è·å–ç°åœ¨æ—¶é—´
 	 * 
-	 * @return·µ»Ø×Ö·û´®¸ñÊ½ yyyy-MM-dd HH:mm:ss
+	 * @returnè¿”å›å­—ç¬¦ä¸²æ ¼å¼ yyyy-MM-dd HH:mm:ss
 	 */
 	public static String getStringDate() {
 		Date currentTime = new Date();
@@ -367,9 +367,9 @@ public class DateExample {
 	}
 
 	/**
-	 * »ñÈ¡ÏÖÔÚÊ±¼ä
+	 * è·å–ç°åœ¨æ—¶é—´
 	 * 
-	 * @return ·µ»Ø¶ÌÊ±¼ä×Ö·û´®¸ñÊ½yyyy-MM-dd
+	 * @return è¿”å›çŸ­æ—¶é—´å­—ç¬¦ä¸²æ ¼å¼yyyy-MM-dd
 	 */
 	public static String getStringDateShort() {
 		Date currentTime = new Date();
@@ -379,7 +379,7 @@ public class DateExample {
 	}
 
 	/**
-	 * »ñÈ¡Ê±¼ä Ğ¡Ê±:·Ö;Ãë HH:mm:ss
+	 * è·å–æ—¶é—´ å°æ—¶:åˆ†;ç§’ HH:mm:ss
 	 * 
 	 * @return
 	 */
@@ -391,7 +391,7 @@ public class DateExample {
 	}
 
 	/**
-	 * ½«³¤Ê±¼ä¸ñÊ½×Ö·û´®×ª»»ÎªÊ±¼ä yyyy-MM-dd HH:mm:ss
+	 * å°†é•¿æ—¶é—´æ ¼å¼å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ—¶é—´ yyyy-MM-dd HH:mm:ss
 	 * 
 	 * @param strDate
 	 * @return
@@ -404,7 +404,7 @@ public class DateExample {
 	}
 
 	/**
-	 * ½«³¤Ê±¼ä¸ñÊ½Ê±¼ä×ª»»Îª×Ö·û´® yyyy-MM-dd HH:mm:ss
+	 * å°†é•¿æ—¶é—´æ ¼å¼æ—¶é—´è½¬æ¢ä¸ºå­—ç¬¦ä¸² yyyy-MM-dd HH:mm:ss
 	 * 
 	 * @param dateDate
 	 * @return
@@ -416,7 +416,7 @@ public class DateExample {
 	}
 
 	/**
-	 * ½«¶ÌÊ±¼ä¸ñÊ½Ê±¼ä×ª»»Îª×Ö·û´® yyyy-MM-dd
+	 * å°†çŸ­æ—¶é—´æ ¼å¼æ—¶é—´è½¬æ¢ä¸ºå­—ç¬¦ä¸² yyyy-MM-dd
 	 * 
 	 * @param dateDate
 	 * @param k
@@ -429,7 +429,7 @@ public class DateExample {
 	}
 
 	/**
-	 * ½«¶ÌÊ±¼ä¸ñÊ½×Ö·û´®×ª»»ÎªÊ±¼ä yyyy-MM-dd
+	 * å°†çŸ­æ—¶é—´æ ¼å¼å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ—¶é—´ yyyy-MM-dd
 	 * 
 	 * @param strDate
 	 * @return
@@ -442,7 +442,7 @@ public class DateExample {
 	}
 
 	/**
-	 * µÃµ½ÏÖÔÚÊ±¼ä
+	 * å¾—åˆ°ç°åœ¨æ—¶é—´
 	 * 
 	 * @return
 	 */
@@ -452,7 +452,7 @@ public class DateExample {
 	}
 
 	/**
-	 * ÌáÈ¡Ò»¸öÔÂÖĞµÄ×îºóÒ»Ìì
+	 * æå–ä¸€ä¸ªæœˆä¸­çš„æœ€åä¸€å¤©
 	 * 
 	 * @param day
 	 * @return
@@ -465,9 +465,9 @@ public class DateExample {
 	}
 
 	/**
-	 * µÃµ½ÏÖÔÚÊ±¼ä
+	 * å¾—åˆ°ç°åœ¨æ—¶é—´
 	 * 
-	 * @return ×Ö·û´® yyyyMMdd HHmmss
+	 * @return å­—ç¬¦ä¸² yyyyMMdd HHmmss
 	 */
 	public static String getStringToday() {
 		Date currentTime = new Date();
@@ -477,7 +477,7 @@ public class DateExample {
 	}
 
 	/**
-	 * µÃµ½ÏÖÔÚĞ¡Ê±
+	 * å¾—åˆ°ç°åœ¨å°æ—¶
 	 */
 	public static String getHour() {
 		Date currentTime = new Date();
@@ -489,7 +489,7 @@ public class DateExample {
 	}
 
 	/**
-	 * µÃµ½ÏÖÔÚ·ÖÖÓ
+	 * å¾—åˆ°ç°åœ¨åˆ†é’Ÿ
 	 * 
 	 * @return
 	 */

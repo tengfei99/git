@@ -5,102 +5,102 @@ import java.util.*;
 import java.awt.Color;
 
 /**
- * <p>Title: Éú³ÉPDF™n</p>
- * <p>Description: ±¾ÊµÀıÍ¨¹ıÊ¹ÓÃiText°üÉú³ÉÒ»¸ö±í¸ñµÄPDFÎÄ¼ş</p>
+ * <p>Title: ç”ŸæˆPDFæª”</p>
+ * <p>Description: æœ¬å®ä¾‹é€šè¿‡ä½¿ç”¨iTextåŒ…ç”Ÿæˆä¸€ä¸ªè¡¨æ ¼çš„PDFæ–‡ä»¶</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Filename: myPDF.java</p>
- * @author ¶Å½­
+ * @author æœæ±Ÿ
  * @version 1.0
  */
 public class myPDF{
 /**
- *<br>·½·¨ËµÃ÷£ºĞ´PDFÎÄ¼ş
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>æ–¹æ³•è¯´æ˜ï¼šå†™PDFæ–‡ä»¶
+ *<br>è¾“å…¥å‚æ•°ï¼š
+ *<br>è¿”å›ç±»å‹ï¼š
  */
   public void write(){
    try{
      Document document=new Document(PageSize.A4, 50, 50, 100, 50);
      Rectangle pageRect=document.getPageSize();
      PdfWriter.getInstance(document, new FileOutputStream("tables.pdf"));
-     //´´½¨ºº×Ö×ÖÌå
+     //åˆ›å»ºæ±‰å­—å­—ä½“
      BaseFont bfSong = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", false);
      Font fontSong = new Font(bfSong, 10, Font.NORMAL);
-     // Ôö¼ÓÒ»¸öË®Ó¡
+     // å¢åŠ ä¸€ä¸ªæ°´å°
      try {
          Watermark watermark = new Watermark(Image.getInstance("test.jpg"), pageRect.left()+50,pageRect.top()-85);
          watermark.scalePercent(50);
          document.add(watermark);
      }catch(Exception e) {
-		  System.err.println("Çë²é¿´ÎÄ¼ştest.jpgÊÇ·ñÔÚÕıÈ·µÄÎ»ÖÃ?");
+		  System.err.println("è¯·æŸ¥çœ‹æ–‡ä»¶test.jpgæ˜¯å¦åœ¨æ­£ç¡®çš„ä½ç½®?");
      }
      
-      // ÎªÒ³Ôö¼ÓÒ³Í·ĞÅÏ¢
-     HeaderFooter header = new HeaderFooter(new Phrase("JavaÊµÀıÒ»°ÙÀı",fontSong), false);
+      // ä¸ºé¡µå¢åŠ é¡µå¤´ä¿¡æ¯
+     HeaderFooter header = new HeaderFooter(new Phrase("Javaå®ä¾‹ä¸€ç™¾ä¾‹",fontSong), false);
      header.setBorder(2);
      header.setAlignment(Element.ALIGN_RIGHT);
      document.setHeader(header);
      
-	  // ÎªÒ³Ôö¼ÓÒ³½ÅĞÅÏ¢
-     HeaderFooter footer = new HeaderFooter(new Phrase("µÚ ",fontSong),new Phrase(" Ò³",fontSong));
+	  // ä¸ºé¡µå¢åŠ é¡µè„šä¿¡æ¯
+     HeaderFooter footer = new HeaderFooter(new Phrase("ç¬¬ ",fontSong),new Phrase(" é¡µ",fontSong));
      footer.setAlignment(Element.ALIGN_CENTER);
      footer.setBorder(1);
      document.setFooter(footer);
 
-      // ´ò¿ªÎÄµµ
+      // æ‰“å¼€æ–‡æ¡£
      document.open(); 
-     //¹¹Ôì±í¸ñ
+     //æ„é€ è¡¨æ ¼
      Table table = new Table(4);
      table.setDefaultVerticalAlignment(Element.ALIGN_MIDDLE);
      table.setBorder(Rectangle.NO_BORDER);
      int hws[] = {10, 20, 10, 20,};
      table.setWidths(hws);
      table.setWidth(100);
-     //±íÍ·ĞÅÏ¢
-     Cell cellmain = new Cell(new Phrase("ÓÃ»§ĞÅÏ¢",new Font(bfSong, 10, Font.BOLD,new Color(0,0,255))));
+     //è¡¨å¤´ä¿¡æ¯
+     Cell cellmain = new Cell(new Phrase("ç”¨æˆ·ä¿¡æ¯",new Font(bfSong, 10, Font.BOLD,new Color(0,0,255))));
      cellmain.setHorizontalAlignment(Element.ALIGN_CENTER);
      cellmain.setColspan(4);
      cellmain.setBorder(Rectangle.NO_BORDER);
      cellmain.setBackgroundColor(new Color(0xC0, 0xC0, 0xC0));
      table.addCell(cellmain);
-      //·Ö±íÍ·ĞÅÏ¢
-     Cell cellleft= new Cell(new Phrase("ÊÕ»õÈËĞÅÏ¢",new Font(bfSong, 10, Font.ITALIC,new Color(0,0,255))));
+      //åˆ†è¡¨å¤´ä¿¡æ¯
+     Cell cellleft= new Cell(new Phrase("æ”¶è´§äººä¿¡æ¯",new Font(bfSong, 10, Font.ITALIC,new Color(0,0,255))));
      cellleft.setColspan(2);
      cellleft.setHorizontalAlignment(Element.ALIGN_CENTER);
      table.addCell(cellleft);
-     Cell cellright= new Cell(new Phrase("¶©»õÈËĞÅÏ¢",new Font(bfSong, 10, Font.ITALIC,new Color(0,0,255))));
+     Cell cellright= new Cell(new Phrase("è®¢è´§äººä¿¡æ¯",new Font(bfSong, 10, Font.ITALIC,new Color(0,0,255))));
      cellright.setColspan(2);
      cellright.setHorizontalAlignment(Element.ALIGN_CENTER);
      table.addCell(cellright);
      
-     //ÊÕ»õºÍ¶©»õÈËĞÅÏ¢£¬±íÌåÄÚÈİ
-     table.addCell(new Phrase("ĞÕÃû",fontSong));
-     table.addCell(new Phrase("ÕÅÈı",fontSong));
-     table.addCell(new Phrase("ĞÕÃû",fontSong));
-     table.addCell(new Phrase("ÀîËÄ",fontSong));
+     //æ”¶è´§å’Œè®¢è´§äººä¿¡æ¯ï¼Œè¡¨ä½“å†…å®¹
+     table.addCell(new Phrase("å§“å",fontSong));
+     table.addCell(new Phrase("å¼ ä¸‰",fontSong));
+     table.addCell(new Phrase("å§“å",fontSong));
+     table.addCell(new Phrase("æå››",fontSong));
 
-     table.addCell(new Phrase("µç»°",fontSong));
+     table.addCell(new Phrase("ç”µè¯",fontSong));
      table.addCell(new Phrase("23456789",fontSong));
-     table.addCell(new Phrase("µç»°",fontSong));
+     table.addCell(new Phrase("ç”µè¯",fontSong));
      table.addCell(new Phrase("9876543",fontSong));
 
-     table.addCell(new Phrase("ÓÊ±à",fontSong));
+     table.addCell(new Phrase("é‚®ç¼–",fontSong));
      table.addCell(new Phrase("100002",fontSong));
-     table.addCell(new Phrase("ÓÊ±à",fontSong));
+     table.addCell(new Phrase("é‚®ç¼–",fontSong));
      table.addCell(new Phrase("200001",fontSong));
 
-     table.addCell(new Phrase("µØÖ·",fontSong));
-     table.addCell(new Phrase("±±¾©Î÷³ÇÇøXXÂ·XXºÅ",fontSong));
-     table.addCell(new Phrase("µØÖ·",fontSong));
-     table.addCell(new Phrase("ÉÏº£Â½¼Ò×ìÇøXXÂ·XXºÅ",fontSong));
+     table.addCell(new Phrase("åœ°å€",fontSong));
+     table.addCell(new Phrase("åŒ—äº¬è¥¿åŸåŒºXXè·¯XXå·",fontSong));
+     table.addCell(new Phrase("åœ°å€",fontSong));
+     table.addCell(new Phrase("ä¸Šæµ·é™†å®¶å˜´åŒºXXè·¯XXå·",fontSong));
 
-     table.addCell(new Phrase("µç×ÓÓÊ¼ş",fontSong));
+     table.addCell(new Phrase("ç”µå­é‚®ä»¶",fontSong));
      table.addCell(new Phrase("zh_san@hotmail.com",fontSong));
-     table.addCell(new Phrase("µç×ÓÓÊ¼ş",fontSong));
+     table.addCell(new Phrase("ç”µå­é‚®ä»¶",fontSong));
      table.addCell(new Phrase("li_si@hotmail.com",fontSong));
-     //½«±í¸ñÌí¼Óµ½ÎÄ±¾ÖĞ
+     //å°†è¡¨æ ¼æ·»åŠ åˆ°æ–‡æœ¬ä¸­
      document.add(table);
-     //¹Ø±ÕÎÄ±¾£¬ÊÍ·Å×ÊÔ´
+     //å…³é—­æ–‡æœ¬ï¼Œé‡Šæ”¾èµ„æº
      document.close(); 
      
    }catch(Exception e){
@@ -108,9 +108,9 @@ public class myPDF{
    }
   }
 /**
- *<br>·½·¨ËµÃ÷£ºÖ÷·½·¨
- *<br>ÊäÈë²ÎÊı£º
- *<br>·µ»ØÀàĞÍ£º
+ *<br>æ–¹æ³•è¯´æ˜ï¼šä¸»æ–¹æ³•
+ *<br>è¾“å…¥å‚æ•°ï¼š
+ *<br>è¿”å›ç±»å‹ï¼š
  */
   public static void main(String[] arg){
     myPDF p = new myPDF();

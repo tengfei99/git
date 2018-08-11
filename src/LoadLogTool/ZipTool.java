@@ -11,7 +11,7 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipOutputStream;
 
 /**
- * ¹¦ÄÜ£ºÑ¹ËõÖ¸¶¨µÄÎÄ¼ş
+ * åŠŸèƒ½ï¼šå‹ç¼©æŒ‡å®šçš„æ–‡ä»¶
  * 
  * @author lishicun l00101203
  * 
@@ -20,23 +20,23 @@ public class ZipTool
 {
 
     /**
-     * ¹¦ÄÜ£ºÑ¹ËõÎÄ¼ş
+     * åŠŸèƒ½ï¼šå‹ç¼©æ–‡ä»¶
      * 
-     * @param filepath ´ıÑ¹ËõµÄÎÄ¼şËùÔÚÄ¿Â¼
-     * @param zipFilename Ñ¹ËõºóµÄÎÄ¼şÃû
-     * @param sourceFileName ´ıÑ¹ËõµÄÎÄ¼ş
+     * @param filepath å¾…å‹ç¼©çš„æ–‡ä»¶æ‰€åœ¨ç›®å½•
+     * @param zipFilename å‹ç¼©åçš„æ–‡ä»¶å
+     * @param sourceFileName å¾…å‹ç¼©çš„æ–‡ä»¶
      * 
      * @throws Exception
      */
     public void createFilesToZip(String filepath, String zipFilename,
             String[] sourceFileName)
     {
-        System.out.println("Info£ºnow, begin compress file(s) .......");
+        System.out.println("Infoï¼šnow, begin compress file(s) .......");
         try
         {
             byte[] buf = new byte[1024];
 
-            // Ñ¹ËõÎÄ¼şÃû
+            // å‹ç¼©æ–‡ä»¶å
             File objFile = new File(filepath + zipFilename);
 
             ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(
@@ -48,18 +48,18 @@ public class ZipTool
             {
                 File sourceFile = new File(filepath + sourceFileName[i]);
 
-                // ÎÄ¼ş²»´æÔÚÔòÌø¹ı¼ÌĞøÏÂÒ»ÎÄ¼ş´¦Àí
+                // æ–‡ä»¶ä¸å­˜åœ¨åˆ™è·³è¿‡ç»§ç»­ä¸‹ä¸€æ–‡ä»¶å¤„ç†
                 if (!sourceFile.exists())
                 {
                     continue;
                 }
 
-                // ´´½¨Ò»¸öZipEntry£¬²¢ÉèÖÃNameºÍÆäËüµÄÒ»Ğ©ÊôĞÔ
+                // åˆ›å»ºä¸€ä¸ªZipEntryï¼Œå¹¶è®¾ç½®Nameå’Œå…¶å®ƒçš„ä¸€äº›å±æ€§
                 ze = new ZipEntry(sourceFile.getName());
                 ze.setSize(sourceFile.length());
                 ze.setTime(sourceFile.lastModified());
 
-                // ½«ZipEntry¼Óµ½zosÖĞ£¬ÔÙĞ´ÈëÊµ¼ÊµÄÎÄ¼şÄÚÈİ
+                // å°†ZipEntryåŠ åˆ°zosä¸­ï¼Œå†å†™å…¥å®é™…çš„æ–‡ä»¶å†…å®¹
                 zos.putNextEntry(ze);
 
                 InputStream is = new BufferedInputStream(new FileInputStream(
@@ -78,13 +78,13 @@ public class ZipTool
             }
             zos.close();
 
-            System.out.println("Info£ºCompress file success!");
+            System.out.println("Infoï¼šCompress file success!");
             System.exit(0);
         }
         catch (ZipException ze)
         {
             System.out
-                    .println("Warn£ºZIP file must have at least one entry to Compress£¡");
+                    .println("Warnï¼šZIP file must have at least one entry to Compressï¼");
         }
         catch (IOException e)
         {

@@ -12,7 +12,7 @@ public class Unltool {
 	public static void main(String[] args) {
 
 		if (args.length != 2) {
-			System.out.println("ÊäÈëµÄ²ÎÊıÎªÁ½¸ö£¬µÚÒ»¸ö²ÎÊıÎª£ºÆğÊ¼ºÅÂë£»µÚ¶ş¸ö²ÎÊıÎª£ºÉú³ÉÊı");
+			System.out.println("è¾“å…¥çš„å‚æ•°ä¸ºä¸¤ä¸ªï¼Œç¬¬ä¸€ä¸ªå‚æ•°ä¸ºï¼šèµ·å§‹å·ç ï¼›ç¬¬äºŒä¸ªå‚æ•°ä¸ºï¼šç”Ÿæˆæ•°");
 			System.exit(0);
 		}
 
@@ -30,11 +30,11 @@ public class Unltool {
 
 			}
 
-			System.out.println("Êı¾İÎÄ¼şÉú³ÉÍê½á±Ï£¡");
+			System.out.println("æ•°æ®æ–‡ä»¶ç”Ÿæˆå®Œç»“æ¯•ï¼");
 			outfile1.close();
 
 		} catch (IOException e) {
-			System.out.println("Êä³öÒì³££¡");
+			System.out.println("è¾“å‡ºå¼‚å¸¸ï¼");
 		} finally {
 
 		}

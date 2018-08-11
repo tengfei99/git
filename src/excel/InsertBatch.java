@@ -1,5 +1,5 @@
 /**
- *  ¹¦ÄÜ:ÍùÖ¸¶¨±íÖĞ²åÈë¶şÎ¬Êı×éµÄÊı¾İ,ÆäÖĞstrArray[0][i]Îª±íµÄ×Ö¶ÎÃû.
+ *  åŠŸèƒ½:å¾€æŒ‡å®šè¡¨ä¸­æ’å…¥äºŒç»´æ•°ç»„çš„æ•°æ®,å…¶ä¸­strArray[0][i]ä¸ºè¡¨çš„å­—æ®µå.
  */
 package excel;
 
@@ -10,12 +10,12 @@ import sqlserver.Sqlserver;
 public class InsertBatch {
 
 	/**
-	 * ¹¦ÄÜ:ÍùÖ¸¶¨±íÖĞ²åÈë¶şÎ¬Êı×éµÄÊı¾İ,ÆäÖĞstrArray[0][i]Îª±íµÄ×Ö¶ÎÃû.
+	 * åŠŸèƒ½:å¾€æŒ‡å®šè¡¨ä¸­æ’å…¥äºŒç»´æ•°ç»„çš„æ•°æ®,å…¶ä¸­strArray[0][i]ä¸ºè¡¨çš„å­—æ®µå.
 	 * 
 	 * @param tableName
-	 *            ´«ÈëµÄ±íÃû
+	 *            ä¼ å…¥çš„è¡¨å
 	 * @param strArray
-	 *            ×ªÈëµÄ¶şÎ¬Êı¾İ
+	 *            è½¬å…¥çš„äºŒç»´æ•°æ®
 	 * 
 	 * @return true/false
 	 */
@@ -27,7 +27,7 @@ public class InsertBatch {
 		String sql = "insert into " + tableName + "(";
 		String ask = "";
 
-		// ¶ÁÈ¡¶şÎ¬Êı¾İµÄµÚÒ»ĞĞµÃµ½²Ù×÷µÄ±íµÄ×Ö¶ÎÃû
+		// è¯»å–äºŒç»´æ•°æ®çš„ç¬¬ä¸€è¡Œå¾—åˆ°æ“ä½œçš„è¡¨çš„å­—æ®µå
 		for (int i = 0; i < strArray[0].length; i++) {
 			sql = sql + strArray[0][i] + ",";
 			ask = ask + "?,";
@@ -36,15 +36,15 @@ public class InsertBatch {
 		sql = sql.substring(0, sql.length() - 1) + ") values ("
 				+ ask.substring(0, ask.length() - 1) + ")";
 
-		System.out.println("Ô¤±àÒëµÄÓï¾ä:" + sql);
+		System.out.println("é¢„ç¼–è¯‘çš„è¯­å¥:" + sql);
 
 		try {
 			PreparedStatement pstmt = db.getConnection().prepareStatement(sql);
 
-			db.getConnection().setAutoCommit(false); // ²»×Ô¶¯Ìá½»ÊÂÎñ
+			db.getConnection().setAutoCommit(false); // ä¸è‡ªåŠ¨æäº¤äº‹åŠ¡
 
-			for (int j = 1; j < strArray.length; j++) {// jÎªĞĞ
-				for (int i = 0; i < strArray[0].length; i++) {// iÎªÁĞ
+			for (int j = 1; j < strArray.length; j++) {// jä¸ºè¡Œ
+				for (int i = 0; i < strArray[0].length; i++) {// iä¸ºåˆ—
 
 					pstmt.setString(i + 1, strArray[j][i]);
 
@@ -52,7 +52,7 @@ public class InsertBatch {
 				pstmt.execute();
 			}
 
-			db.getConnection().commit();// Ìá½»ÊÂÎñ
+			db.getConnection().commit();// æäº¤äº‹åŠ¡
 
 			flag = true;
 

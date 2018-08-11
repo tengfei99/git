@@ -4,13 +4,13 @@ import java.net.*;
 class IPP{
 	InetAddress myIPaddress=null;
 	InetAddress myServer=null;
-	//LOCALHOSTªºIP¦a§}
+	//LOCALHOSTî€™IPî›‡îƒ
 	public InetAddress getMyIP() {
 	try { myIPaddress=InetAddress.getLocalHost();}
 	catch (UnknownHostException e) {}
 	return (myIPaddress);
 	}
-	//www.abc.com ªºIP¦a§}
+	//www.abc.com î€™IPî›‡îƒ
 	public InetAddress getServerIP(){
 	try {myServer=InetAddress.getByName(
 	"www.gdzhixiu.com");}

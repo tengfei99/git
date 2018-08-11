@@ -16,7 +16,7 @@ import sun.net.ftp.FtpClient;
 import sun.net.ftp.FtpLoginException;
 
 /**
- * ¹¦ÄÜ£ºÏÂÔØ·þÎñÆ÷ÉÏÖ¸¶¨µÄÎÄ¼þ,¿ÉÑ¹Ëõ
+ * åŠŸèƒ½ï¼šä¸‹è½½æœåŠ¡å™¨ä¸ŠæŒ‡å®šçš„æ–‡ä»¶,å¯åŽ‹ç¼©
  * 
  * @author lishicun l00101203
  * 
@@ -25,7 +25,7 @@ public class LoadLogTool {
 	private ChannelSftp sftp = null;
 
 	/**
-	 * ¹¦ÄÜ£ºÒÔFTPÏÂÔØ·þÎñÆ÷ÈÕÖ¾ÎÄ¼þ
+	 * åŠŸèƒ½ï¼šä»¥FTPä¸‹è½½æœåŠ¡å™¨æ—¥å¿—æ–‡ä»¶
 	 * 
 	 * @param dm
 	 */
@@ -34,7 +34,7 @@ public class LoadLogTool {
 
 		FtpClient ftpClient = new FtpClient();
 
-		// FTPµ½·þÎñÆ÷
+		// FTPåˆ°æœåŠ¡å™¨
 		try {
 			System.out.println("Connected to " + dm.getIP() + ".");
 			System.out.println("get file(s) via FTP. Now begin download...");
@@ -44,17 +44,17 @@ public class LoadLogTool {
 
 			if (dm.getUnixpath().length() != 0) {
 				ftpClient.cd(dm.getUnixpath());
-				System.out.println("Info£ºEnter directory-->" + ftpClient.pwd());
+				System.out.println("Infoï¼šEnter directory-->" + ftpClient.pwd());
 			}
 
-			// TelnetInputStream¹ÊÓÃ¶þ½øÖÆ
+			// TelnetInputStreamæ•…ç”¨äºŒè¿›åˆ¶
 			ftpClient.binary();
 		} catch (FtpLoginException fle) {
 			System.out
-					.println("Info£ºConnect FTP Server failed£¡program terminate.");
+					.println("Infoï¼šConnect FTP Server failedï¼program terminate.");
 			System.exit(0);
 		} catch (FileNotFoundException ffe) {
-			System.out.println("Info£ºNo such directory£º" + dm.getUnixpath());
+			System.out.println("Infoï¼šNo such directoryï¼š" + dm.getUnixpath());
 			System.exit(0);
 		} catch (IOException io) {
 			io.printStackTrace();
@@ -64,7 +64,7 @@ public class LoadLogTool {
 			try {
 
 				File file_out = new File(dm.getLocalpath() + files[i]);
-				// ÏÈÉ¾ºóÏÂÔØ£¬±ÜÃâÒ»Ð©ÈÕÖ¾ÎÄ¼þ·þÎñÃ»ÓÐ£¬µ«±¾µØ»¹´æÔÚ
+				// å…ˆåˆ åŽä¸‹è½½ï¼Œé¿å…ä¸€äº›æ—¥å¿—æ–‡ä»¶æœåŠ¡æ²¡æœ‰ï¼Œä½†æœ¬åœ°è¿˜å­˜åœ¨
 				file_out.delete();
 
 				System.out.println("      Download " + files[i] + " Success!");
@@ -86,7 +86,7 @@ public class LoadLogTool {
 		}
 
 		try {
-			ftpClient.closeServer();// ¹Ø±ÕFTPÁ¬½Ó
+			ftpClient.closeServer();// å…³é—­FTPè¿žæŽ¥
 			System.out.println("Info:Download the Server file(s) Finish!");
 			System.out.println("Info:Local directory is -->"
 					+ dm.getLocalpath());
@@ -153,7 +153,7 @@ public class LoadLogTool {
 	private void download(DataModel dm, ChannelSftp sftp) {
 		try {
 			sftp.cd(dm.getUnixpath());
-			System.out.println("Info£ºEnter directory-->" + sftp.pwd());
+			System.out.println("Infoï¼šEnter directory-->" + sftp.pwd());
 		} catch (Exception e) {
 			;
 		}
@@ -162,7 +162,7 @@ public class LoadLogTool {
 
 		for (int i = 0; i < files.length; i++) {
 			File file_out = new File(dm.getLocalpath() + files[i]);
-			// ÏÈÉ¾ºóÏÂÔØ£¬±ÜÃâÒ»Ð©ÈÕÖ¾ÎÄ¼þ·þÎñÃ»ÓÐ£¬µ«±¾µØ»¹´æÔÚ
+			// å…ˆåˆ åŽä¸‹è½½ï¼Œé¿å…ä¸€äº›æ—¥å¿—æ–‡ä»¶æœåŠ¡æ²¡æœ‰ï¼Œä½†æœ¬åœ°è¿˜å­˜åœ¨
 			file_out.delete();
 		}
 
@@ -218,7 +218,7 @@ public class LoadLogTool {
 			llt.disconnect();
 		}
 
-		// Ñ¹ËõÏÂÔØµÄÈÕÖ¾ÎÄ¼þ
+		// åŽ‹ç¼©ä¸‹è½½çš„æ—¥å¿—æ–‡ä»¶
 		if ("0".equals(sv.getIscompress())) {
 			ZipTool zt = new ZipTool();
 
@@ -228,7 +228,7 @@ public class LoadLogTool {
 					sv.getZipfilename() + ".zip", sourceFileName);
 		}
 
-		// Ö´ÐÐÒ³ÃæÍ£ÁôÊ±¼äÉè¶¨
+		// æ‰§è¡Œé¡µé¢åœç•™æ—¶é—´è®¾å®š
 		try {
 			int i = Integer.valueOf(sv.getViewtime()).intValue();
 

@@ -26,7 +26,7 @@ public class FileWriterExample {
 		  
 		  FileReader f=new FileReader("newFile1.jsp"); 
 		  
-		  //InputStreamReader isr = new InputStreamReader(is, "UTF-8");// 指定UTF-8字符集，解决乱码
+		  //InputStreamReader isr = new InputStreamReader(is, "UTF-8");// 鎸囧畾UTF-8瀛楃闆嗭紝瑙ｅ喅涔辩爜
 		  //BufferedReader br = new BufferedReader(isr);
 			
 		  BufferedReader buffer1=new BufferedReader(f);

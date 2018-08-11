@@ -5,7 +5,7 @@ class TestCharset {
 	}
 
 	private void execute() {
-		String s = "Hello!ƒ„∫√£°";
+		String s = "Hello!‰Ω†Â•ΩÔºÅ";
 
 		byte[] bytesISO8859 = null;
 		byte[] bytesGBK = null;
@@ -33,7 +33,7 @@ class TestCharset {
 		String b;
 		for (int i = 0; i < bytes.length; i++) {
 			b = Integer.toHexString(bytes[i]);
-			// byte «¡Ω∏ˆ◊÷Ω⁄µƒ£¨∂¯…œ√ÊµƒInteger.toHexStringª·∞—◊÷Ω⁄¿©’πŒ™4∏ˆ◊÷Ω⁄
+			// byteÊòØ‰∏§‰∏™Â≠óËäÇÁöÑÔºåËÄå‰∏äÈù¢ÁöÑInteger.toHexString‰ºöÊääÂ≠óËäÇÊâ©Â±ï‰∏∫4‰∏™Â≠óËäÇ
 			buff.append(b.length() > 2 ? b.substring(6, 8) : b);
 			buff.append(" ");
 		}

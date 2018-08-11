@@ -10,7 +10,7 @@ import java.util.Properties;
 /**
  * 
  * @author Administrator
- * @Description Êı¾İ¿â²Ù×÷Àà
+ * @Description æ•°æ®åº“æ“ä½œç±»
  */
 public class Sqlserver {
 
@@ -24,7 +24,7 @@ public class Sqlserver {
 	private static String password = "";
 
 	/**
-	 * static ¶¼»áÊ×ÏÈÖ´ĞĞ
+	 * static éƒ½ä¼šé¦–å…ˆæ‰§è¡Œ
 	 */
 	static {
 		try {
@@ -51,7 +51,7 @@ public class Sqlserver {
 	}
 
 	/**
-	 * ÉèÖÃJDBCµÄÁ¬½Ó´®
+	 * è®¾ç½®JDBCçš„è¿æ¥ä¸²
 	 * 
 	 * @param JdbcUrl
 	 */
@@ -60,7 +60,7 @@ public class Sqlserver {
 	}
 
 	/**
-	 * ÉèÖÃµÇÂ¼Êı¾İ¿âµÄÓÃ»§Ãû
+	 * è®¾ç½®ç™»å½•æ•°æ®åº“çš„ç”¨æˆ·å
 	 * 
 	 * @param hostuser
 	 */
@@ -69,7 +69,7 @@ public class Sqlserver {
 	}
 
 	/**
-	 * ÉèÖÃµÇÂ¼Êı¾İµÄÃÜÂë
+	 * è®¾ç½®ç™»å½•æ•°æ®çš„å¯†ç 
 	 * 
 	 * @param hostpassword
 	 */
@@ -78,7 +78,7 @@ public class Sqlserver {
 	}
 
 	/**
-	 * µÃµ½Êı¾İ¿âÁ¬½Ó:connection
+	 * å¾—åˆ°æ•°æ®åº“è¿æ¥:connection
 	 * 
 	 * @return connection
 	 */
@@ -86,26 +86,26 @@ public class Sqlserver {
 		try {
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (SQLException e) {
-			System.out.println("Á¬½ÓÊı¾İ¿âÊ§°Ü:" + e.toString());
+			System.out.println("è¿æ¥æ•°æ®åº“å¤±è´¥:" + e.toString());
 		}
 
 		return conn;
 	}
 
 	/**
-	 * createStatement( int Type ,int concurency) ²ÎÊıËµÃ÷ÈçÏÂ£º
+	 * createStatement( int Type ,int concurency) å‚æ•°è¯´æ˜å¦‚ä¸‹ï¼š
 	 * <p>
-	 * ²ÎÊıType ¾ö¶¨ÁËÖ´ĞĞ²éÑ¯ºóµÄ½á¹û¼¯µÄÓÎ±êÒÆ¶¯·½Ê½¡£ÓĞÈçÏÂÈıÖÖÈ¡Öµ£º ResultSet.TYPE_FORWARD_ONLY
-	 * ½á¹û¼¯ÓÎ±êÖ»ÄÜÏòÏÂÒÆ¶¯ ResultSet.TYPE_SCROLL_INSENSITIVE
-	 * ½á¹û¼¯ÓÎ±ê¿ÉÒÔÉÏÏÂÒÆ¶¯£¬µ«Êı¾İ¿âÄÚÈİ·¢Éú±ä»¯ºó½á¹û¼¯²»±ä¡£ ResultSet.TYPE_SCROLL_SENSITIVE
-	 * ½á¹û¼¯ÓÎ±ê¿ÉÒÔÉÏÏÂÒÆ¶¯£¬Êı¾İ¿âÄÚÈİ·¢Éú±ä»¯ºó½á¹û¼¯ÄÚÈİÍ¬²½±ä»¯¡£
+	 * å‚æ•°Type å†³å®šäº†æ‰§è¡ŒæŸ¥è¯¢åçš„ç»“æœé›†çš„æ¸¸æ ‡ç§»åŠ¨æ–¹å¼ã€‚æœ‰å¦‚ä¸‹ä¸‰ç§å–å€¼ï¼š ResultSet.TYPE_FORWARD_ONLY
+	 * ç»“æœé›†æ¸¸æ ‡åªèƒ½å‘ä¸‹ç§»åŠ¨ ResultSet.TYPE_SCROLL_INSENSITIVE
+	 * ç»“æœé›†æ¸¸æ ‡å¯ä»¥ä¸Šä¸‹ç§»åŠ¨ï¼Œä½†æ•°æ®åº“å†…å®¹å‘ç”Ÿå˜åŒ–åç»“æœé›†ä¸å˜ã€‚ ResultSet.TYPE_SCROLL_SENSITIVE
+	 * ç»“æœé›†æ¸¸æ ‡å¯ä»¥ä¸Šä¸‹ç§»åŠ¨ï¼Œæ•°æ®åº“å†…å®¹å‘ç”Ÿå˜åŒ–åç»“æœé›†å†…å®¹åŒæ­¥å˜åŒ–ã€‚
 	 * <p>
-	 * ²ÎÊıconcurency¾ö¶¨ÁËÊÇ·ñ¿ÉÒÔÓÃ½á¹û¼ÇÂ¼¼¯¸üĞÂÊı¾İ¿âÖĞµÄ±í£¬È¡ÖµÈçÏÂ£º ResultSet.CONCUR_READ_ONLY
-	 * ½á¹û¼¯Ö»ÄÜ¶Á£¬²»ÄÜ¸üĞÂÊı¾İ±íÖĞµÄÊı¾İ¡£ ResultSet.CONCUR_UPDATABLE ÓÃ½á¹û¼ÇÂ¼¼¯¿ÉÒÔ¸üĞÂÊı¾İ±íÖĞµÄÊı¾İ¡£
+	 * å‚æ•°concurencyå†³å®šäº†æ˜¯å¦å¯ä»¥ç”¨ç»“æœè®°å½•é›†æ›´æ–°æ•°æ®åº“ä¸­çš„è¡¨ï¼Œå–å€¼å¦‚ä¸‹ï¼š ResultSet.CONCUR_READ_ONLY
+	 * ç»“æœé›†åªèƒ½è¯»ï¼Œä¸èƒ½æ›´æ–°æ•°æ®è¡¨ä¸­çš„æ•°æ®ã€‚ ResultSet.CONCUR_UPDATABLE ç”¨ç»“æœè®°å½•é›†å¯ä»¥æ›´æ–°æ•°æ®è¡¨ä¸­çš„æ•°æ®ã€‚
 	 * 
 	 * @param sql
-	 *            ´«Èë²éÑ¯µÄsqlÓï¾ä
-	 * @return ResultSet ·µ»ØÓÎ±ê¼¯
+	 *            ä¼ å…¥æŸ¥è¯¢çš„sqlè¯­å¥
+	 * @return ResultSet è¿”å›æ¸¸æ ‡é›†
 	 */
 	public ResultSet executeQuery(String sql) {
 		try {

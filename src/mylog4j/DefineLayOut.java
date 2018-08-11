@@ -3,7 +3,7 @@ package mylog4j;
 import org.apache.log4j.HTMLLayout;
 
 /**
- * 解决Log4j中发送邮件中乱码问题，重新指定字符为UTF-8
+ * 瑙ｅ喅Log4j涓彂閫侀偖浠朵腑涔辩爜闂锛岄噸鏂版寚瀹氬瓧绗︿负UTF-8
  * @author li
  *
  */

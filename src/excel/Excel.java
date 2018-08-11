@@ -12,10 +12,10 @@ import jxl.write.WritableWorkbook;
 
 /**
  * <p>
- * Title: ²Ù×÷EXCELÎÄ¼ş
+ * Title: æ“ä½œEXCELæ–‡ä»¶
  * </p>
  * <p>
- * Description: ±¾ÊµÀıÑİÊ¾Ê¹ÓÃjxl°üÊµÏÖ¶ÔexcelÎÄ¼şµÄ²Ù×÷
+ * Description: æœ¬å®ä¾‹æ¼”ç¤ºä½¿ç”¨jxlåŒ…å®ç°å¯¹excelæ–‡ä»¶çš„æ“ä½œ
  * </p>
  * <p>
  * Copyright: Copyright (c) 2003
@@ -24,7 +24,7 @@ import jxl.write.WritableWorkbook;
  * Filename: myExcel.java
  * </p>
  * 
- * @author ¶Å½­
+ * @author æœæ±Ÿ
  * @version 1.0
  */
 public class Excel {
@@ -33,27 +33,27 @@ public class Excel {
 
 	/**
 	 * <br>
-	 * ·½·¨ËµÃ÷£ºĞ´ÈëÎÄ¼ş²Ù×÷ <br>
-	 * ÊäÈë²ÎÊı£º <br>
-	 * ·µ»ØÀàĞÍ£º
+	 * æ–¹æ³•è¯´æ˜ï¼šå†™å…¥æ–‡ä»¶æ“ä½œ <br>
+	 * è¾“å…¥å‚æ•°ï¼š <br>
+	 * è¿”å›ç±»å‹ï¼š
 	 */
 	public void write() {
 		try {
-			// ´´½¨Ò»¸ö¿ÉĞ´ÈëµÄexcelÎÄ¼ş¶ÔÏó
+			// åˆ›å»ºä¸€ä¸ªå¯å†™å…¥çš„excelæ–‡ä»¶å¯¹è±¡
 			WritableWorkbook workbook = Workbook.createWorkbook(new File(
 					"myfile.xls"));
-			// Ê¹ÓÃµÚÒ»ÕÅ¹¤×÷±í£¬½«ÆäÃüÃûÎª¡°Îç²Í¼ÇÂ¼¡±
-			WritableSheet sheet = workbook.createSheet("Îç²Í¼ÇÂ¼", 0);
-			// ±íÍ·
-			Label label0 = new Label(0, 0, "Ê±¼ä");
+			// ä½¿ç”¨ç¬¬ä¸€å¼ å·¥ä½œè¡¨ï¼Œå°†å…¶å‘½åä¸ºâ€œåˆé¤è®°å½•â€
+			WritableSheet sheet = workbook.createSheet("åˆé¤è®°å½•", 0);
+			// è¡¨å¤´
+			Label label0 = new Label(0, 0, "æ—¶é—´");
 			sheet.addCell(label0);
-			Label label1 = new Label(1, 0, "ĞÕÃû");
+			Label label1 = new Label(1, 0, "å§“å");
 			sheet.addCell(label1);
-			Label label2 = new Label(2, 0, "Îç²Í±ê×¼");
+			Label label2 = new Label(2, 0, "åˆé¤æ ‡å‡†");
 			sheet.addCell(label2);
-			Label label3 = new Label(3, 0, "Êµ¼Ê·ÑÓÃ");
+			Label label3 = new Label(3, 0, "å®é™…è´¹ç”¨");
 			sheet.addCell(label3);
-			// ¸ñÊ½»¯ÈÕÆÚ
+			// æ ¼å¼åŒ–æ—¥æœŸ
 			jxl.write.DateFormat df = new jxl.write.DateFormat(
 					"yyyy-dd-MM  hh:mm:ss");
 			jxl.write.WritableCellFormat wcfDF = new jxl.write.WritableCellFormat(
@@ -61,10 +61,10 @@ public class Excel {
 			jxl.write.DateTime labelDTF = new jxl.write.DateTime(0, 1,
 					new java.util.Date(), wcfDF);
 			sheet.addCell(labelDTF);
-			// ÆÕÍ¨×Ö·û
+			// æ™®é€šå­—ç¬¦
 			Label labelCFC = new Label(1, 1, "riverwind");
 			sheet.addCell(labelCFC);
-			// ¸ñÊ½»¯Êı×Ö
+			// æ ¼å¼åŒ–æ•°å­—
 			jxl.write.NumberFormat nf = new jxl.write.NumberFormat("#.##");
 			WritableCellFormat wcfN = new WritableCellFormat(nf);
 			jxl.write.Number labelNF = new jxl.write.Number(2, 1, 13.1415926,
@@ -74,7 +74,7 @@ public class Excel {
 			jxl.write.Number labelNNF = new jxl.write.Number(3, 1, 10.50001,
 					wcfN);
 			sheet.addCell(labelNNF);
-			// ¹Ø±Õ¶ÔÏó£¬ÊÍ·Å×ÊÔ´
+			// å…³é—­å¯¹è±¡ï¼Œé‡Šæ”¾èµ„æº
 			workbook.write();
 			workbook.close();
 
@@ -85,13 +85,13 @@ public class Excel {
 
 	/**
 	 * <br>
-	 * ·½·¨ËµÃ÷£º¶ÁÈ¡excelÎÄ¼şÒ»ĞĞÊı¾İ <br>
-	 * ÊäÈë²ÎÊı£ºint rowÖ¸¶¨µÄĞĞÊı <br>
-	 * ·µ»ØÀàĞÍ£ºString¡²¡³½á¹ûÊı×é
+	 * æ–¹æ³•è¯´æ˜ï¼šè¯»å–excelæ–‡ä»¶ä¸€è¡Œæ•°æ® <br>
+	 * è¾“å…¥å‚æ•°ï¼šint rowæŒ‡å®šçš„è¡Œæ•° <br>
+	 * è¿”å›ç±»å‹ï¼šStringã€”ã€•ç»“æœæ•°ç»„
 	 */
 	public String[] readLine(int row) {
 		try {
-			// »ñÈ¡Êı¾İ±íÁĞÊı
+			// è·å–æ•°æ®è¡¨åˆ—æ•°
 			int colnum = sheet.getColumns();
 			//System.out.println(colnum);
 			String[] rest = new String[colnum];
@@ -110,13 +110,13 @@ public class Excel {
 
 	/**
 	 * <br>
-	 * ·½·¨ËµÃ÷£º¶ÁÈ¡excelµÄÖ¸¶¨µ¥ÔªÊı¾İ <br>
-	 * ÊäÈë²ÎÊı£º <br>
-	 * ·µ»ØÀàĞÍ£º
+	 * æ–¹æ³•è¯´æ˜ï¼šè¯»å–excelçš„æŒ‡å®šå•å…ƒæ•°æ® <br>
+	 * è¾“å…¥å‚æ•°ï¼š <br>
+	 * è¿”å›ç±»å‹ï¼š
 	 */
 	public String read(int col, int row) {
 		try {
-			// »ñµÃµ¥ÔªÊı¾İ
+			// è·å¾—å•å…ƒæ•°æ®
 			Cell a2 = sheet.getCell(col, row);
 			String rest = a2.getContents();
 			return rest;
@@ -129,23 +129,23 @@ public class Excel {
 
 	/**
 	 * <br>
-	 * ·½·¨ËµÃ÷£ºÖ÷·½·¨£¬ÑİÊ¾³ÌĞòÓÃ <br>
-	 * ÊäÈë²ÎÊı£º <br>
-	 * ·µ»ØÀàĞÍ£º
+	 * æ–¹æ³•è¯´æ˜ï¼šä¸»æ–¹æ³•ï¼Œæ¼”ç¤ºç¨‹åºç”¨ <br>
+	 * è¾“å…¥å‚æ•°ï¼š <br>
+	 * è¿”å›ç±»å‹ï¼š
 	 */
 	public static void main(String[] arges) {
 		try {
 			Excel me = new Excel();
-			// Éú³ÉÒ»¸ö¿É¶ÁÈ¡µÄexcelÎÄ¼ş¶ÔÏó
+			// ç”Ÿæˆä¸€ä¸ªå¯è¯»å–çš„excelæ–‡ä»¶å¯¹è±¡
 			me.workbook = Workbook.getWorkbook(new File("myfile.xls"));
-			// Ê¹ÓÃµÚÒ»¸ö¹¤×÷±í
+			// ä½¿ç”¨ç¬¬ä¸€ä¸ªå·¥ä½œè¡¨
 			me.sheet = me.workbook.getSheet(0);
-			// ¶ÁÒ»ĞĞ¼ÇÂ¼£¬²¢ÏÔÊ¾³öÀ´
+			// è¯»ä¸€è¡Œè®°å½•ï¼Œå¹¶æ˜¾ç¤ºå‡ºæ¥
 			String[] ssTemp = me.readLine(1);
 			
 			for (int i = 0; i < ssTemp.length; i++)
 				System.out.println(ssTemp[i]);
-			// Ğ´ÈëÊı¾İ
+			// å†™å…¥æ•°æ®
 			me.write();
 
 			me.workbook.close();
