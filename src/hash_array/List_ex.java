@@ -26,7 +26,7 @@ public class List_ex {
 	void List_example() {
 		// List<String> list = new ArrayList<String>(); //宣告存储的对象为String，J2SE
 		// 5.0之后使用的泛型功能。
-		List<String> list = new LinkedList<String>();
+		List<String> list = new ArrayList<String>();
 
 		list.add("a");
 		list.add("b");
